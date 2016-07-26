@@ -98,15 +98,12 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 		return $this->getList($sqlQuery);
 	}
 
-
 	public function deleteByNombreDocumento($value){
 		$sql = 'DELETE FROM tiposdocumentos WHERE nombreDocumento = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
-
-
 	
 	/**
 	 * Read row
@@ -150,7 +147,6 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	protected function execute($sqlQuery){
 		return QueryExecutor::execute($sqlQuery);
 	}
-	
 		
 	/**
 	 * Execute sql query

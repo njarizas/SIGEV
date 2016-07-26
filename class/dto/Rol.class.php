@@ -7,9 +7,29 @@
 	 */
 	class Rol{
 		
-		var $idRol;
+		private $idRol;
+		private $nombreRol;
+                
+                function __construct($nombreRol) {
+                    $this->nombreRol = $nombreRol;
+                }
 
-		var $nombreRol;
-		
+                function getIdRol() {
+                    return $this->idRol;
+                }
+
+                function getNombreRol() {
+                    return $this->nombreRol;
+                }
+
+                function setIdRol($idRol) {
+                    $this->idRol = $idRol;
+                }
+
+                function setNombreRol($nombreRol) {
+                    $this->nombreRol = $nombreRol;
+                }
+
+		
 	}
 ?>

@@ -7,9 +7,30 @@
 	 */
 	class ExamenPregunta{
 		
-		var $idExamen;
+		private $idExamen;
+		private $idPregunta;
+                
+                function __construct($idExamen, $idPregunta) {
+                    $this->idExamen = $idExamen;
+                    $this->idPregunta = $idPregunta;
+                }
 
-		var $idPregunta;
-		
+                function getIdExamen() {
+                    return $this->idExamen;
+                }
+
+                function getIdPregunta() {
+                    return $this->idPregunta;
+                }
+
+                function setIdExamen($idExamen) {
+                    $this->idExamen = $idExamen;
+                }
+
+                function setIdPregunta($idPregunta) {
+                    $this->idPregunta = $idPregunta;
+                }
+
+		
 	}
 ?>

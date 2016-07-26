@@ -7,13 +7,49 @@
 	 */
 	class ResultadoExamen{
 		
-		var $idResultadosExamenes;
+		private $idResultadosExamenes;
+		private $idEstudiante;
+		private $idExamen;
+		private $nota;
+                
+                function __construct($idEstudiante, $idExamen, $nota) {
+                    $this->idEstudiante = $idEstudiante;
+                    $this->idExamen = $idExamen;
+                    $this->nota = $nota;
+                }
 
-		var $idEstudiante;
+                function getIdResultadosExamenes() {
+                    return $this->idResultadosExamenes;
+                }
 
-		var $idExamen;
+                function getIdEstudiante() {
+                    return $this->idEstudiante;
+                }
 
-		var $nota;
-		
+                function getIdExamen() {
+                    return $this->idExamen;
+                }
+
+                function getNota() {
+                    return $this->nota;
+                }
+
+                function setIdResultadosExamenes($idResultadosExamenes) {
+                    $this->idResultadosExamenes = $idResultadosExamenes;
+                }
+
+                function setIdEstudiante($idEstudiante) {
+                    $this->idEstudiante = $idEstudiante;
+                }
+
+                function setIdExamen($idExamen) {
+                    $this->idExamen = $idExamen;
+                }
+
+                function setNota($nota) {
+                    $this->nota = $nota;
+                }
+
+		
 	}
 ?>

@@ -7,9 +7,27 @@
 	 */
 	class TipoDocumento{
 		
-		var $idTipoDocumento;
+		private $idTipoDocumento;
+		private $nombreDocumento;
+                
+                function __construct($nombreDocumento) {
+                    $this->nombreDocumento = $nombreDocumento;
+                }
 
-		var $nombreDocumento;
-		
+                function getIdTipoDocumento() {
+                    return $this->idTipoDocumento;
+                }
+
+                function getNombreDocumento() {
+                    return $this->nombreDocumento;
+                }
+
+                function setIdTipoDocumento($idTipoDocumento) {
+                    $this->idTipoDocumento = $idTipoDocumento;
+                }
+
+                function setNombreDocumento($nombreDocumento) {
+                    $this->nombreDocumento = $nombreDocumento;
+                }
 	}
 ?>

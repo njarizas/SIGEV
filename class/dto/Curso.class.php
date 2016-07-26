@@ -7,8 +7,29 @@
 	 */
 	class Curso{
 		
-		var $idCurso;
-		var $nombreCurso;
-		
+		private $idCurso;
+		private $nombreCurso;
+                
+                function __construct($nombreCurso) {
+                    $this->nombreCurso = $nombreCurso;
+                }
+
+                function getIdCurso() {
+                    return $this->idCurso;
+                }
+
+                function getNombreCurso() {
+                    return $this->nombreCurso;
+                }
+
+                function setIdCurso($idCurso) {
+                    $this->idCurso = $idCurso;
+                }
+
+                function setNombreCurso($nombreCurso) {
+                    $this->nombreCurso = $nombreCurso;
+                }
+
+		
 	}
 ?>

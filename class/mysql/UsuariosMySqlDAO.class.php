@@ -57,7 +57,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
  	 * @param UsuariosMySql usuario
  	 */
 	public function insert($usuario){
-		$sql = 'INSERT INTO usuarios (idTipoDocumento, documento, nombres, apellido1, apellido2, correo, constrasena) VALUES (?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO usuarios (idTipoDocumento, documento, nombres, apellido1, apellido2, correo, clave) VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($usuario->idTipoDocumento);
@@ -66,7 +66,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$sqlQuery->set($usuario->apellido1);
 		$sqlQuery->set($usuario->apellido2);
 		$sqlQuery->set($usuario->correo);
-		$sqlQuery->set($usuario->constrasena);
+		$sqlQuery->set($usuario->clave);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$usuario->idUsuario = $id;
@@ -79,7 +79,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
  	 * @param UsuariosMySql usuario
  	 */
 	public function update($usuario){
-		$sql = 'UPDATE usuarios SET idTipoDocumento = ?, documento = ?, nombres = ?, apellido1 = ?, apellido2 = ?, correo = ?, constrasena = ? WHERE idUsuario = ?';
+		$sql = 'UPDATE usuarios SET idTipoDocumento = ?, documento = ?, nombres = ?, apellido1 = ?, apellido2 = ?, correo = ?, clave = ? WHERE idUsuario = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($usuario->idTipoDocumento);
@@ -88,7 +88,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$sqlQuery->set($usuario->apellido1);
 		$sqlQuery->set($usuario->apellido2);
 		$sqlQuery->set($usuario->correo);
-		$sqlQuery->set($usuario->constrasena);
+		$sqlQuery->set($usuario->clave);
 
 		$sqlQuery->setNumber($usuario->idUsuario);
 		return $this->executeUpdate($sqlQuery);
@@ -146,7 +146,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 	}
 
 	public function queryByConstrasena($value){
-		$sql = 'SELECT * FROM usuarios WHERE constrasena = ?';
+		$sql = 'SELECT * FROM usuarios WHERE clave = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -196,7 +196,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 	}
 
 	public function deleteByConstrasena($value){
-		$sql = 'DELETE FROM usuarios WHERE constrasena = ?';
+		$sql = 'DELETE FROM usuarios WHERE clave = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -219,7 +219,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$usuario->apellido1 = $row['apellido1'];
 		$usuario->apellido2 = $row['apellido2'];
 		$usuario->correo = $row['correo'];
-		$usuario->constrasena = $row['constrasena'];
+		$usuario->clave = $row['clave'];
 
 		return $usuario;
 	}

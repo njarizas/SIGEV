@@ -7,13 +7,49 @@
 	 */
 	class ResultadoPregunta{
 		
-		var $idResultadosPreguntas;
+		private $idResultadosPreguntas;
+		private $idResultadosExamenes;
+		private $idRespuesta;
+		private $idPregunta;
+                
+                function __construct($idResultadosExamenes, $idRespuesta, $idPregunta) {
+                    $this->idResultadosExamenes = $idResultadosExamenes;
+                    $this->idRespuesta = $idRespuesta;
+                    $this->idPregunta = $idPregunta;
+                }
 
-		var $idResultadosExamenes;
+                function getIdResultadosPreguntas() {
+                    return $this->idResultadosPreguntas;
+                }
 
-		var $idRespuesta;
+                function getIdResultadosExamenes() {
+                    return $this->idResultadosExamenes;
+                }
 
-		var $idPregunta;
-		
+                function getIdRespuesta() {
+                    return $this->idRespuesta;
+                }
+
+                function getIdPregunta() {
+                    return $this->idPregunta;
+                }
+
+                function setIdResultadosPreguntas($idResultadosPreguntas) {
+                    $this->idResultadosPreguntas = $idResultadosPreguntas;
+                }
+
+                function setIdResultadosExamenes($idResultadosExamenes) {
+                    $this->idResultadosExamenes = $idResultadosExamenes;
+                }
+
+                function setIdRespuesta($idRespuesta) {
+                    $this->idRespuesta = $idRespuesta;
+                }
+
+                function setIdPregunta($idPregunta) {
+                    $this->idPregunta = $idPregunta;
+                }
+
+		
 	}
 ?>

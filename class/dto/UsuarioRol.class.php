@@ -7,9 +7,30 @@
 	 */
 	class UsuarioRol{
 		
-		var $idUsuario;
+		private $idUsuario;
+		private $idRol;
+                
+                function __construct($idUsuario, $idRol) {
+                    $this->idUsuario = $idUsuario;
+                    $this->idRol = $idRol;
+                }
 
-		var $idRol;
-		
+                function getIdUsuario() {
+                    return $this->idUsuario;
+                }
+
+                function getIdRol() {
+                    return $this->idRol;
+                }
+
+                function setIdUsuario($idUsuario) {
+                    $this->idUsuario = $idUsuario;
+                }
+
+                function setIdRol($idRol) {
+                    $this->idRol = $idRol;
+                }
+
+		
 	}
 ?>
