@@ -12,7 +12,7 @@
  * @author Nelson
  */
 require_once 'class/config/Database.class.php';
-require_once 'TipoDocumentoDaoInterface.php';
+require_once 'class/dao/TipoDocumentoDaoInterface.php';
 class TipoDocumentoDaoImplementacion implements TipoDocumentoDaoInterface{
     
     private $conn;

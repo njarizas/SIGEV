@@ -29,5 +29,7 @@ foreach ($conexion->query($query) as $fila) {
     echo '<td>'.$fila['nombredocumento'].'</td></tr>';
 }
 echo '</table>';
-$tipoDocDao->insertar('Pasaporte');
+//$tipoDocDao->insertar('Cédula de ciudadanía');
+//$tipoDocDao->insertar('Tarjeta de identidad');
+//$tipoDocDao->insertar('Cédula de extranjería');
 ?>

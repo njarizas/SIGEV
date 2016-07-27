@@ -10,6 +10,6 @@
  *
  * @author Nelson
  */
-interface TipoDocumentoDao {
+interface TipoDocumentoDaoInterface {
     function insertar($nombre);   
 }
