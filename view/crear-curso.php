@@ -21,8 +21,7 @@
         require_once '../class/mysql/CursosMySqlDAO.class.php';
 
         $cursosDAO = new CursosMySqlDAO();
-        $nombreCurso = "";
-        if (isset($_POST['registrar'])) {
+        if (isset($_POST['registrar-curso'])) {
             $nombreCurso=($_POST["nombreCurso"]);
             if ($cursosDAO->insertar($nombreCurso) > 0) {
             echo "<script>alert('El curso \"".$nombreCurso."\" se agrego exitosamente');</script>";
@@ -48,7 +47,7 @@
                             </div>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary" name="registrar" value="registrar">Crear Curso</button>
+                            <button type="submit" class="btn btn-primary" name="registrar-curso" value="registrar-curso">Crear Curso</button>
                         </div>
 
                     </form>
