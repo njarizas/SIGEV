@@ -187,19 +187,20 @@ class CursosMySqlDAO implements CursosDAO{
     return $this->conn->query($query);
     }
     
-    public function insertar($nombreCurso) {
-    $query="INSERT INTO cursos (nombrecurso) VALUES(?)";
-    $stmt=  $this->conn->prepare($query);
-    $stmt->bindparam(1,$nombreCurso);
-    $stmt->execute();
-    }
-    
-    function getConn() {
+	public function insertar($nombreCurso) {
+		$query="INSERT INTO cursos (nombrecurso) VALUES(?)";
+		$stmt=  $this->conn->prepare($query);
+		$stmt->bindparam(1,$nombreCurso);
+		$stmt->execute();
+	}
+
+	function getConn() {
         return $this->conn;
     }
 
     function setConn($conn) {
         $this->conn = $conn;
     }
+	
 }
 ?>

@@ -5,6 +5,9 @@
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
+require_once '../class/config/Database.class.php';
+require_once '../class/dao/TiposdocumentosDAO.class.php';
+
 class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 
 	/**
@@ -13,6 +16,15 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	 * @param String $id primary key
 	 * @return TiposdocumentosMySql 
 	 */
+	private $conn;
+
+	/**
+	 * UsuariosMySqlDAO constructor.
+	 * @param $conn
+	 */
+	function __construct() {
+		$this->conn= Database::connect();
+	}
 	public function load($id){
 		$sql = 'SELECT * FROM tiposdocumentos WHERE idTipoDocumento = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -168,5 +180,28 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	protected function executeInsert($sqlQuery){
 		return QueryExecutor::executeInsert($sqlQuery);
 	}
+
+
+	public function listarDoc() {
+		$query ="SELECT * FROM tiposdocumentos";
+		return $this->conn->query($query);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getConn()
+	{
+		return $this->conn;
+	}
+
+	/**
+	 * @param mixed $conn
+	 */
+	public function setConn($conn)
+	{
+		$this->conn = $conn;
+	}
+	
 }
 ?>

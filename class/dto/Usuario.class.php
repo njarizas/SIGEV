@@ -25,69 +25,104 @@
                     $this->clave = $clave;
                 }
 
-                function getIdUsuario() {
-                    return $this->idUsuario;
-                }
+        public function getIdUsuario()
+        {
+            return $this->idUsuario;
+        }
 
-                function getIdTipoDocumento() {
-                    return $this->idTipoDocumento;
-                }
+        public function setIdUsuario($idUsuario)
+        {
+            $this->idUsuario = $idUsuario;
+            return $this;
+        }
 
-                function getDocumento() {
-                    return $this->documento;
-                }
+        public function getIdTipoDocumento()
+        {
+            return $this->idTipoDocumento;
+        }
 
-                function getNombres() {
-                    return $this->nombres;
-                }
 
-                function getApellido1() {
-                    return $this->apellido1;
-                }
+        public function setIdTipoDocumento($idTipoDocumento)
+        {
+            $this->idTipoDocumento = $idTipoDocumento;
+            return $this;
+        }
 
-                function getApellido2() {
-                    return $this->apellido2;
-                }
 
-                function getCorreo() {
-                    return $this->correo;
-                }
+        public function getApellido1()
+        {
+            return $this->apellido1;
+        }
 
-                function getClave() {
-                    return $this->clave;
-                }
 
-                function setIdUsuario($idUsuario) {
-                    $this->idUsuario = $idUsuario;
-                }
+        public function setApellido1($apellido1)
+        {
+            $this->apellido1 = $apellido1;
+            return $this;
+        }
 
-                function setIdTipoDocumento($idTipoDocumento) {
-                    $this->idTipoDocumento = $idTipoDocumento;
-                }
 
-                function setDocumento($documento) {
-                    $this->documento = $documento;
-                }
+        public function getNombres()
+        {
+            return $this->nombres;
+        }
 
-                function setNombres($nombres) {
-                    $this->nombres = $nombres;
-                }
 
-                function setApellido1($apellido1) {
-                    $this->apellido1 = $apellido1;
-                }
+        public function setNombres($nombres)
+        {
+            $this->nombres = $nombres;
+            return $this;
+        }
 
-                function setApellido2($apellido2) {
-                    $this->apellido2 = $apellido2;
-                }
 
-                function setCorreo($correo) {
-                    $this->correo = $correo;
-                }
+        public function getDocumento()
+        {
+            return $this->documento;
+        }
 
-                function setClave($clave) {
-                    $this->clave = $clave;
-                }
+
+        public function setDocumento($documento)
+        {
+            $this->documento = $documento;
+            return $this;
+        }
+
+
+        public function getApellido2()
+        {
+            return $this->apellido2;
+        }
+
+        public function setApellido2($apellido2)
+        {
+            $this->apellido2 = $apellido2;
+            return $this;
+        }
+
+        public function getCorreo()
+        {
+            return $this->correo;
+        }
+
+
+        public function setCorreo($correo)
+        {
+            $this->correo = $correo;
+            return $this;
+        }
+
+
+        public function getClave()
+        {
+            return $this->clave;
+        }
+
+        public function setClave($clave)
+        {
+            $this->clave = $clave;
+            return $this;
+        }
+
 
          
 	}

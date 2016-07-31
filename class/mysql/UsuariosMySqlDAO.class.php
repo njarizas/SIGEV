@@ -5,14 +5,26 @@
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
+require_once '../class/config/Database.class.php';
+require_once '../class/dao/UsuariosDAO.class.php';
 class UsuariosMySqlDAO implements UsuariosDAO{
 
-	/**
+	/*
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return UsuariosMySql 
+	 * @return UsuariosMySql
 	 */
+	private $conn;
+
+	/**
+	 * UsuariosMySqlDAO constructor.
+	 * @param $conn
+	 */
+	function __construct() {
+		$this->conn= Database::connect();
+	}
+
 	public function load($id){
 		$sql = 'SELECT * FROM usuarios WHERE idUsuario = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -28,7 +40,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
-	
+
 	/**
 	 * Get all records from table ordered by field
 	 *
@@ -39,7 +51,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
-	
+
 	/**
  	 * Delete record from table
  	 * @param usuario primary key
@@ -50,7 +62,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$sqlQuery->setNumber($idUsuario);
 		return $this->executeUpdate($sqlQuery);
 	}
-	
+
 	/**
  	 * Insert record to table
  	 *
@@ -59,7 +71,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 	public function insert($usuario){
 		$sql = 'INSERT INTO usuarios (idTipoDocumento, documento, nombres, apellido1, apellido2, correo, clave) VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
-		
+
 		$sqlQuery->setNumber($usuario->idTipoDocumento);
 		$sqlQuery->set($usuario->documento);
 		$sqlQuery->set($usuario->nombres);
@@ -68,11 +80,11 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		$sqlQuery->set($usuario->correo);
 		$sqlQuery->set($usuario->clave);
 
-		$id = $this->executeInsert($sqlQuery);	
+		$id = $this->executeInsert($sqlQuery);
 		$usuario->idUsuario = $id;
 		return $id;
 	}
-	
+
 	/**
  	 * Update record in table
  	 *
@@ -81,7 +93,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 	public function update($usuario){
 		$sql = 'UPDATE usuarios SET idTipoDocumento = ?, documento = ?, nombres = ?, apellido1 = ?, apellido2 = ?, correo = ?, clave = ? WHERE idUsuario = ?';
 		$sqlQuery = new SqlQuery($sql);
-		
+
 		$sqlQuery->setNumber($usuario->idTipoDocumento);
 		$sqlQuery->set($usuario->documento);
 		$sqlQuery->set($usuario->nombres);
@@ -203,15 +215,15 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 	}
 
 
-	
+
 	/**
 	 * Read row
 	 *
-	 * @return UsuariosMySql 
+	 * @return UsuariosMySql
 	 */
 	protected function readRow($row){
 		$usuario = new Usuario();
-		
+
 		$usuario->idUsuario = $row['idUsuario'];
 		$usuario->idTipoDocumento = $row['idTipoDocumento'];
 		$usuario->documento = $row['documento'];
@@ -223,7 +235,7 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 
 		return $usuario;
 	}
-	
+
 	protected function getList($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);
 		$ret = array();
@@ -232,28 +244,28 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 		}
 		return $ret;
 	}
-	
+
 	/**
 	 * Get row
 	 *
-	 * @return UsuariosMySql 
+	 * @return UsuariosMySql
 	 */
 	protected function getRow($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);
 		if(count($tab)==0){
 			return null;
 		}
-		return $this->readRow($tab[0]);		
+		return $this->readRow($tab[0]);
 	}
-	
+
 	/**
 	 * Execute sql query
 	 */
 	protected function execute($sqlQuery){
 		return QueryExecutor::execute($sqlQuery);
 	}
-	
-		
+
+
 	/**
 	 * Execute sql query
 	 */
@@ -274,5 +286,38 @@ class UsuariosMySqlDAO implements UsuariosDAO{
 	protected function executeInsert($sqlQuery){
 		return QueryExecutor::executeInsert($sqlQuery);
 	}
+
+	public function listarUsuarios() {
+		$query="SELECT * FROM  usuarios ORDER BY nombres";
+		return $this->conn->query($query);
+	}
+
+
+	public function insertar($usuario) {
+		$query="INSERT INTO usuarios (idtipodocumento,documento,nombres,apellido1,apellido2,correo,constrasena) VALUES(?,?,?,?,?,?,?)";
+		$stmt=  $this->conn->prepare($query);
+		$stmt->bindparam(1,$usuario->getIdTipoDocumento);
+		$stmt->bindparam(2,$usuario->getDocumento);
+		$stmt->bindparam(3,$usuario->getNombres);
+		$stmt->bindparam(4,$usuario->getApellido1);
+		$stmt->bindparam(5,$usuario->getApellido2);
+		$stmt->bindparam(6,$usuario->getCorreo);
+		$stmt->bindparam(7,$usuario->getClave);
+		$stmt->execute();
+	}
+
+
+	public function getConn()
+	{
+		return $this->conn;
+	}
+
+
+	public function setConn($conn)
+	{
+		$this->conn = $conn;
+	}
+
+	
 }
 ?>
