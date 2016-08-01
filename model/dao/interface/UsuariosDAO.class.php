@@ -1,85 +1,84 @@
 <?php
+
 /**
  * Intreface DAO
  *
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
-interface UsuariosDAO{
+interface UsuariosDAO {
 
-	/**
-	 * Get Domain object by primry key
-	 *
-	 * @param String $id primary key
-	 * @Return Usuarios 
-	 */
-	public function load($id);
+    /**
+     * Get Domain object by primry key
+     *
+     * @param String $id primary key
+     * @Return Usuarios 
+     */
+    public function load($id);
 
-	/**
-	 * Get all records from table
-	 */
-	public function queryAll();
-	
-	/**
-	 * Get all records from table ordered by field
-	 * @Param $orderColumn column name
-	 */
-	public function queryAllOrderBy($orderColumn);
-	
-	/**
- 	 * Delete record from table
- 	 * @param usuario primary key
- 	 */
-	public function delete($idUsuario);
-	
-	/**
- 	 * Insert record to table
- 	 *
- 	 * @param Usuarios usuario
- 	 */
-	public function insert($usuario);
-	
-	/**
- 	 * Update record in table
- 	 *
- 	 * @param Usuarios usuario
- 	 */
-	public function update($usuario);	
+    /**
+     * Get all records from table
+     */
+    public function queryAll();
 
-	/**
-	 * Delete all rows
-	 */
-	public function clean();
+    /**
+     * Get all records from table ordered by field
+     * @Param $orderColumn column name
+     */
+    public function queryAllOrderBy($orderColumn);
 
-	public function queryByIdTipoDocumento($value);
+    /**
+     * Delete record from table
+     * @param usuario primary key
+     */
+    public function delete($idUsuario);
 
-	public function queryByDocumento($value);
+    /**
+     * Insert record to table
+     *
+     * @param Usuarios usuario
+     */
+    public function insert($usuario);
 
-	public function queryByNombres($value);
+    /**
+     * Update record in table
+     *
+     * @param Usuarios usuario
+     */
+    public function update($usuario);
 
-	public function queryByApellido1($value);
+    /**
+     * Delete all rows
+     */
+    public function clean();
 
-	public function queryByApellido2($value);
+    public function queryByIdTipoDocumento($value);
 
-	public function queryByCorreo($value);
+    public function queryByDocumento($value);
 
-	public function queryByConstrasena($value);
+    public function queryByNombres($value);
 
+    public function queryByApellido1($value);
 
-	public function deleteByIdTipoDocumento($value);
+    public function queryByApellido2($value);
 
-	public function deleteByDocumento($value);
+    public function queryByCorreo($value);
 
-	public function deleteByNombres($value);
+    public function queryByClave($value);
 
-	public function deleteByApellido1($value);
+    public function deleteByIdTipoDocumento($value);
 
-	public function deleteByApellido2($value);
+    public function deleteByDocumento($value);
 
-	public function deleteByCorreo($value);
+    public function deleteByNombres($value);
 
-	public function deleteByConstrasena($value);
+    public function deleteByApellido1($value);
 
+    public function deleteByApellido2($value);
 
+    public function deleteByCorreo($value);
+
+    public function deleteByClave($value);
 }
+
 ?>
