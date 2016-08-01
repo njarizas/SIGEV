@@ -299,6 +299,16 @@ class UsuariosMySqlDAO implements UsuariosDAO {
         return $stmt->execute();
     }
 
+    public function obtenerUsuarioPorDocumento($doc) {
+        $query = "SELECT * FROM usuarios WHERE documento='".$doc."'";
+        return $this->conn->query($query);
+    }
+
+    public function obtenerUsuarioPorCorreo($correo) {
+        $query = "SELECT * FROM usuarios WHERE correo='".$correo."'";
+        return $this->conn->query($query);
+    }
+
     public function getConn() {
         return $this->conn;
     }

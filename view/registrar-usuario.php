@@ -10,30 +10,52 @@
         <script src="js/formValidation.min.js"></script> <!-- NEW!!! -->
         <script src="js/bootstrap.js"></script> <!-- NEW!!! -->
         <script src="js/es_ES.js"></script> <!-- NEW!!! -->
+        <script src="js/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
     </head>
     <body>
-                <?php
-                include("header.php");
-                require_once '../model/dto/Usuario.class.php';
-                require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
-                require_once '../model/dao/implementacion/TiposdocumentosMySqlDAO.class.php';
-                $usuarioDAO = new UsuariosMySqlDAO();
-                $tipoDocDAO = new TiposdocumentosMySqlDAO();
-                $tipoDoc = $tipoDocDAO->listarDoc();
-                $confirmaContrasena = "";
-                if (isset($_POST['registrar-usuario'])) {
-                    $idtipoDoc = ($_POST["tipoDoc"]);
-                    $documento = ($_POST["documento"]);
-                    $nombres = ($_POST["nombre"]);
-                    $apellido1 = ($_POST["primerApellido"]);
-                    $apellido2 = ($_POST["segundoApellido"]);
-                    $correo = ($_POST["correo"]);
-                    $contrasena = ($_POST["contrasena"]);
-                    $usuario = new Usuario($idtipoDoc, $documento, $nombres, $apellido1, $apellido2, $correo, $contrasena);
-                    if ($usuarioDAO->insertar($usuario) > 0) {
-                        echo "<script>alert('El usuario con correo \"".$usuario->getCorreo()."\" se registro exitosamente');</script>";
-                    }
-                }
+        <?php
+        include("header.php");
+        require_once '../model/dto/Usuario.class.php';
+        require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
+        require_once '../model/dao/implementacion/TiposdocumentosMySqlDAO.class.php';
+        $usuarioDAO = new UsuariosMySqlDAO();
+        $tipoDocDAO = new TiposdocumentosMySqlDAO();
+        $tipoDoc = $tipoDocDAO->listarDoc();
+        $idtipoDoc = "";
+        $documento = "";
+        $nombres = "";
+        $apellido1 = "";
+        $apellido2 = "";
+        $correo = "";
+        $contrasena = "";
+        $confirmaContrasena = "";
+        if (isset($_POST['registrar-usuario'])) {
+            $idtipoDoc = ($_POST["tipoDoc"]);
+            $documento = ($_POST["documento"]);
+            $nombres = ($_POST["nombre"]);
+            $apellido1 = ($_POST["primerApellido"]);
+            $apellido2 = ($_POST["segundoApellido"]);
+            $correo = ($_POST["correo"]);
+            $contrasena = ($_POST["contrasena"]);
+            $confirmaContrasena = ($_POST["confircontrasena"]);
+            $usuario = new Usuario($idtipoDoc, $documento, $nombres, $apellido1, $apellido2, $correo, $contrasena);
+            $usuExiste = $usuarioDAO->obtenerUsuarioPorDocumento($documento);
+            $usu = 0;
+            foreach ($usuExiste as $fila) {
+                $usu = $fila['documento'];
+            }
+            $usuExiste2 = $usuarioDAO->obtenerUsuarioPorCorreo($correo);
+            $usu2 = 0;
+            foreach ($usuExiste2 as $fila2) {
+                $usu2 = $fila2['correo'];
+            }
+            if ($usu == $documento) {
+                echo "<script>swal(\"Registro fallido\",\"ya existe un usuario registrado con documento " . $usuario->getDocumento() . "\", \"error\");</script>";
+            } elseif (strcmp($usu2, $correo) == 0) {
+                echo "<script>swal(\"Registro fallido\",\"ya existe un usuario registrado con correo " . $usuario->getCorreo() . "\", \"error\");</script>";
+            } elseif ($usuarioDAO->insertar($usuario) > 0) {
+                echo "<script>swal(\"Registro exitóso\", \"El usuario: " . $usuario->getCorreo() . " fue registrado exitósamente \", \"success\");</script>";
                 $idtipoDoc = "";
                 $documento = "";
                 $nombres = "";
@@ -41,7 +63,10 @@
                 $apellido2 = "";
                 $correo = "";
                 $contrasena = "";
-                ?>
+                $confirmaContrasena = "";
+            }
+        }
+        ?>
 
         <div class="container">
             <div class="row">
@@ -64,7 +89,7 @@
                                     <option value="" disabled selected>Seleccione tipo de documento</option>
                                     <?php
                                     foreach ($tipoDoc as $fila) {
-                                        echo '<option value="'.$fila['idtipodocumento'].'">' . $fila['nombredocumento'] . '</option>';
+                                        echo '<option value="' . $fila['idtipodocumento'] . '">' . $fila['nombredocumento'] . '</option>';
                                     }
                                     ?>
                                 </select>
