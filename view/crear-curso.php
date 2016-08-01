@@ -10,7 +10,10 @@
         <script src="js/formValidation.min.js"></script> <!-- NEW!!! -->
         <script src="js/bootstrap.js"></script> <!-- NEW!!! -->
         <script src="js/es_ES.js"></script> <!-- NEW!!! -->
-
+        <!-- This is what you need -->
+        <script src="js/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+        <!--.......................-->
     </head>
     <body>
         <div class="container" style="background-color:#EEE;">
@@ -23,7 +26,7 @@
                     if (isset($_POST['registrar-curso'])) {
                         $nombreCurso = ($_POST["nombreCurso"]);
                         if ($cursosDAO->insertar($nombreCurso) > 0) {
-                            echo "<script>alert('El curso \"" . $nombreCurso . "\" se agrego exitosamente');</script>";
+                            echo "<script>swal(\"Registro exitóso\", \"El curso: ".$nombreCurso." fue registrado exitósamente \", \"success\");</script>";
                         }
                     }
                     $nombreCurso = "";

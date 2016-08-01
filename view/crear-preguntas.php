@@ -10,7 +10,10 @@
         <script src="js/formValidation.min.js"></script> <!-- NEW!!! -->
         <script src="js/bootstrap.js"></script> <!-- NEW!!! -->
         <script src="js/es_ES.js"></script> <!-- NEW!!! -->
-
+        <!-- This is what you need -->
+        <script src="js/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+        <!--.......................-->
     </head>
     <body> 
         <div class="container" style="background-color:#EEE;">
@@ -57,7 +60,7 @@
                                     $respuesta = new Respuesta($pregunta->getIdPregunta(), $respuestaErronea[$i]);
                                     $respuestasDAO->insertar($respuesta);
                                 }
-                                echo "<script>alert('La pregunta se agrego exitosamente');</script>";
+                                echo "<script>swal(\"Registro exitóso\", \"La pregunta: ".$pregunta->getEnunciado()." fue registrada exitósamente \", \"success\");</script>";
                             }
                         }
                     }

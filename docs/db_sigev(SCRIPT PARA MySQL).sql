@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `db_sigev`.`Usuarios` (
   `apellido1` VARCHAR(35) NOT NULL,
   `apellido2` VARCHAR(35) NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `constrasena` VARCHAR(32) NOT NULL,
+  `clave` VARCHAR(32) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   CONSTRAINT `fk_Usuarios_TiposDoc`
     FOREIGN KEY (`idTipoDocumento`)
