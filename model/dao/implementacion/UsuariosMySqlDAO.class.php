@@ -155,7 +155,7 @@ class UsuariosMySqlDAO implements UsuariosDAO {
         return $this->getList($sqlQuery);
     }
 
-    public function queryByConstrasena($value) {
+    public function queryByClave($value) {
         $sql = 'SELECT * FROM usuarios WHERE clave = ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->set($value);
@@ -204,7 +204,7 @@ class UsuariosMySqlDAO implements UsuariosDAO {
         return $this->executeUpdate($sqlQuery);
     }
 
-    public function deleteByConstrasena($value) {
+    public function deleteByClave($value) {
         $sql = 'DELETE FROM usuarios WHERE clave = ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->set($value);
@@ -287,7 +287,7 @@ class UsuariosMySqlDAO implements UsuariosDAO {
     }
 
     public function insertar($usuario) {
-        $query = "INSERT INTO usuarios (idtipodocumento,documento,nombres,apellido1,apellido2,correo,constrasena) VALUES(?,?,?,?,?,?,?)";
+        $query = "INSERT INTO usuarios (idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave) VALUES(?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindparam(1, $usuario->getIdTipoDocumento());
         $stmt->bindparam(2, $usuario->getDocumento());
