@@ -5,106 +5,106 @@
  * @author: http://phpdao.com
  * @date: ${date}
  */
-class DAOFactory{
-	
-	/**
-	 * @return CursosDAO
-	 */
-	public static function getCursosDAO(){
-		return new CursosMySqlExtDAO();
-	}
+class DAOFactory {
 
-	/**
-	 * @return EstadosexamenesDAO
-	 */
-	public static function getEstadosexamenesDAO(){
-		return new EstadosexamenesMySqlExtDAO();
-	}
+    /**
+     * @return CursosDAO
+     */
+    public static function getCursosDAO() {
+        return new CursosMySqlExtDAO();
+    }
 
-	/**
-	 * @return ExamenesDAO
-	 */
-	public static function getExamenesDAO(){
-		return new ExamenesMySqlExtDAO();
-	}
+    /**
+     * @return EstadosexamenesDAO
+     */
+    public static function getEstadosexamenesDAO() {
+        return new EstadosexamenesMySqlExtDAO();
+    }
 
-	/**
-	 * @return ExamenespreguntasDAO
-	 */
-	public static function getExamenespreguntasDAO(){
-		return new ExamenespreguntasMySqlExtDAO();
-	}
+    /**
+     * @return ExamenesDAO
+     */
+    public static function getExamenesDAO() {
+        return new ExamenesMySqlExtDAO();
+    }
 
-	/**
-	 * @return PermisosDAO
-	 */
-	public static function getPermisosDAO(){
-		return new PermisosMySqlExtDAO();
-	}
+    /**
+     * @return ExamenespreguntasDAO
+     */
+    public static function getExamenespreguntasDAO() {
+        return new ExamenespreguntasMySqlExtDAO();
+    }
 
-	/**
-	 * @return PreguntasDAO
-	 */
-	public static function getPreguntasDAO(){
-		return new PreguntasMySqlExtDAO();
-	}
+    /**
+     * @return PermisosDAO
+     */
+    public static function getPermisosDAO() {
+        return new PermisosMySqlExtDAO();
+    }
 
-	/**
-	 * @return RespuestasDAO
-	 */
-	public static function getRespuestasDAO(){
-		return new RespuestasMySqlExtDAO();
-	}
+    /**
+     * @return PreguntasDAO
+     */
+    public static function getPreguntasDAO() {
+        return new PreguntasMySqlExtDAO();
+    }
 
-	/**
-	 * @return ResultadosexamenesDAO
-	 */
-	public static function getResultadosexamenesDAO(){
-		return new ResultadosexamenesMySqlExtDAO();
-	}
+    /**
+     * @return RespuestasDAO
+     */
+    public static function getRespuestasDAO() {
+        return new RespuestasMySqlExtDAO();
+    }
 
-	/**
-	 * @return ResultadospreguntasDAO
-	 */
-	public static function getResultadospreguntasDAO(){
-		return new ResultadospreguntasMySqlExtDAO();
-	}
+    /**
+     * @return ResultadosexamenesDAO
+     */
+    public static function getResultadosexamenesDAO() {
+        return new ResultadosexamenesMySqlExtDAO();
+    }
 
-	/**
-	 * @return RolesDAO
-	 */
-	public static function getRolesDAO(){
-		return new RolesMySqlExtDAO();
-	}
+    /**
+     * @return ResultadospreguntasDAO
+     */
+    public static function getResultadospreguntasDAO() {
+        return new ResultadospreguntasMySqlExtDAO();
+    }
 
-	/**
-	 * @return RolesPermisosDAO
-	 */
-	public static function getRolesPermisosDAO(){
-		return new RolesPermisosMySqlExtDAO();
-	}
+    /**
+     * @return RolesDAO
+     */
+    public static function getRolesDAO() {
+        return new RolesMySqlExtDAO();
+    }
 
-	/**
-	 * @return TiposdocumentosDAO
-	 */
-	public static function getTiposdocumentosDAO(){
-		return new TiposdocumentosMySqlExtDAO();
-	}
+    /**
+     * @return RolesPermisosDAO
+     */
+    public static function getRolesPermisosDAO() {
+        return new RolesPermisosMySqlExtDAO();
+    }
 
-	/**
-	 * @return UsuariosDAO
-	 */
-	public static function getUsuariosDAO(){
-		return new UsuariosMySqlExtDAO();
-	}
+    /**
+     * @return TiposdocumentosDAO
+     */
+    public static function getTiposdocumentosDAO() {
+        return new TiposdocumentosMySqlExtDAO();
+    }
 
-	/**
-	 * @return UsuariosRolesDAO
-	 */
-	public static function getUsuariosRolesDAO(){
-		return new UsuariosRolesMySqlExtDAO();
-	}
+    /**
+     * @return UsuariosDAO
+     */
+    public static function getUsuariosDAO() {
+        return new UsuariosMySqlExtDAO();
+    }
 
+    /**
+     * @return UsuariosRolesDAO
+     */
+    public static function getUsuariosRolesDAO() {
+        return new UsuariosRolesMySqlExtDAO();
+    }
 
 }
+
 ?>

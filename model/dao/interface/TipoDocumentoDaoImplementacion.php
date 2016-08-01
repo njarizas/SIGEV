@@ -13,20 +13,22 @@
  */
 require_once '../class/config/Database.class.php';
 require_once '../class/dao/TipoDocumentoDaoInterface.php';
-class TipoDocumentoDaoImplementacion implements TipoDocumentoDaoInterface{
-    
+
+class TipoDocumentoDaoImplementacion implements TipoDocumentoDaoInterface {
+
     private $conn;
-    
+
     function __construct() {
-        $this->conn= Database::connect();
+        $this->conn = Database::connect();
     }
 
     public function insertar($nombre) {
-    $query="INSERT INTO tiposdocumentos (nombredocumento) VALUES(?)";
-    $stmt=  $this->conn->prepare($query);
-    $stmt->bindparam(1,$nombre);
-    $stmt->execute();
+        $query = "INSERT INTO tiposdocumentos (nombredocumento) VALUES(?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindparam(1, $nombre);
+        $stmt->execute();
     }
+
     function getConn() {
         return $this->conn;
     }
@@ -34,4 +36,5 @@ class TipoDocumentoDaoImplementacion implements TipoDocumentoDaoInterface{
     function setConn($conn) {
         $this->conn = $conn;
     }
+
 }

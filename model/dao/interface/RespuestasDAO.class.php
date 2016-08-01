@@ -1,65 +1,64 @@
 <?php
+
 /**
  * Intreface DAO
  *
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
-interface RespuestasDAO{
+interface RespuestasDAO {
 
-	/**
-	 * Get Domain object by primry key
-	 *
-	 * @param String $id primary key
-	 * @Return Respuestas 
-	 */
-	public function load($id);
+    /**
+     * Get Domain object by primry key
+     *
+     * @param String $id primary key
+     * @Return Respuestas 
+     */
+    public function load($id);
 
-	/**
-	 * Get all records from table
-	 */
-	public function queryAll();
-	
-	/**
-	 * Get all records from table ordered by field
-	 * @Param $orderColumn column name
-	 */
-	public function queryAllOrderBy($orderColumn);
-	
-	/**
- 	 * Delete record from table
- 	 * @param respuesta primary key
- 	 */
-	public function delete($idRespuesta);
-	
-	/**
- 	 * Insert record to table
- 	 *
- 	 * @param Respuestas respuesta
- 	 */
-	public function insert($respuesta);
-	
-	/**
- 	 * Update record in table
- 	 *
- 	 * @param Respuestas respuesta
- 	 */
-	public function update($respuesta);	
+    /**
+     * Get all records from table
+     */
+    public function queryAll();
 
-	/**
-	 * Delete all rows
-	 */
-	public function clean();
+    /**
+     * Get all records from table ordered by field
+     * @Param $orderColumn column name
+     */
+    public function queryAllOrderBy($orderColumn);
 
-	public function queryByIdPregunta($value);
+    /**
+     * Delete record from table
+     * @param respuesta primary key
+     */
+    public function delete($idRespuesta);
 
-	public function queryByRespuesta($value);
+    /**
+     * Insert record to table
+     *
+     * @param Respuestas respuesta
+     */
+    public function insert($respuesta);
 
+    /**
+     * Update record in table
+     *
+     * @param Respuestas respuesta
+     */
+    public function update($respuesta);
 
-	public function deleteByIdPregunta($value);
+    /**
+     * Delete all rows
+     */
+    public function clean();
 
-	public function deleteByRespuesta($value);
+    public function queryByIdPregunta($value);
 
+    public function queryByRespuesta($value);
 
+    public function deleteByIdPregunta($value);
+
+    public function deleteByRespuesta($value);
 }
+
 ?>

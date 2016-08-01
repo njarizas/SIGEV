@@ -1,95 +1,96 @@
 <?php
-	/**
-	 * Object represents table 'examenes'
-	 *
-     	 * @author: http://phpdao.com
-     	 * @date: 2016-07-24 18:58	 
-	 */
-	class Examen{
-		
-		private $idExamen;
-		private $idCurso;
-		private $idProfesor;
-		private $fechaInicio;
-		private $horaInicio;
-		private $fechaFin;
-		private $horaFin;
-		private $idEstadoExamen;
-                
-                function __construct($idCurso, $idProfesor, $fechaInicio, $horaInicio, $fechaFin, $horaFin, $idEstadoExamen) {
-                    $this->idCurso = $idCurso;
-                    $this->idProfesor = $idProfesor;
-                    $this->fechaInicio = $fechaInicio;
-                    $this->horaInicio = $horaInicio;
-                    $this->fechaFin = $fechaFin;
-                    $this->horaFin = $horaFin;
-                    $this->idEstadoExamen = $idEstadoExamen;
-                }
 
-                function getIdExamen() {
-                    return $this->idExamen;
-                }
+/**
+ * Object represents table 'examenes'
+ *
+ * @author: http://phpdao.com
+ * @date: 2016-07-24 18:58	 
+ */
+class Examen {
 
-                function getIdCurso() {
-                    return $this->idCurso;
-                }
+    private $idExamen;
+    private $idCurso;
+    private $idProfesor;
+    private $fechaInicio;
+    private $horaInicio;
+    private $fechaFin;
+    private $horaFin;
+    private $idEstadoExamen;
 
-                function getIdProfesor() {
-                    return $this->idProfesor;
-                }
+    function __construct($idCurso, $idProfesor, $fechaInicio, $horaInicio, $fechaFin, $horaFin, $idEstadoExamen) {
+        $this->idCurso = $idCurso;
+        $this->idProfesor = $idProfesor;
+        $this->fechaInicio = $fechaInicio;
+        $this->horaInicio = $horaInicio;
+        $this->fechaFin = $fechaFin;
+        $this->horaFin = $horaFin;
+        $this->idEstadoExamen = $idEstadoExamen;
+    }
 
-                function getFechaInicio() {
-                    return $this->fechaInicio;
-                }
+    function getIdExamen() {
+        return $this->idExamen;
+    }
 
-                function getHoraInicio() {
-                    return $this->horaInicio;
-                }
+    function getIdCurso() {
+        return $this->idCurso;
+    }
 
-                function getFechaFin() {
-                    return $this->fechaFin;
-                }
+    function getIdProfesor() {
+        return $this->idProfesor;
+    }
 
-                function getHoraFin() {
-                    return $this->horaFin;
-                }
+    function getFechaInicio() {
+        return $this->fechaInicio;
+    }
 
-                function getIdEstadoExamen() {
-                    return $this->idEstadoExamen;
-                }
+    function getHoraInicio() {
+        return $this->horaInicio;
+    }
 
-                function setIdExamen($idExamen) {
-                    $this->idExamen = $idExamen;
-                }
+    function getFechaFin() {
+        return $this->fechaFin;
+    }
 
-                function setIdCurso($idCurso) {
-                    $this->idCurso = $idCurso;
-                }
+    function getHoraFin() {
+        return $this->horaFin;
+    }
 
-                function setIdProfesor($idProfesor) {
-                    $this->idProfesor = $idProfesor;
-                }
+    function getIdEstadoExamen() {
+        return $this->idEstadoExamen;
+    }
 
-                function setFechaInicio($fechaInicio) {
-                    $this->fechaInicio = $fechaInicio;
-                }
+    function setIdExamen($idExamen) {
+        $this->idExamen = $idExamen;
+    }
 
-                function setHoraInicio($horaInicio) {
-                    $this->horaInicio = $horaInicio;
-                }
+    function setIdCurso($idCurso) {
+        $this->idCurso = $idCurso;
+    }
 
-                function setFechaFin($fechaFin) {
-                    $this->fechaFin = $fechaFin;
-                }
+    function setIdProfesor($idProfesor) {
+        $this->idProfesor = $idProfesor;
+    }
 
-                function setHoraFin($horaFin) {
-                    $this->horaFin = $horaFin;
-                }
+    function setFechaInicio($fechaInicio) {
+        $this->fechaInicio = $fechaInicio;
+    }
 
-                function setIdEstadoExamen($idEstadoExamen) {
-                    $this->idEstadoExamen = $idEstadoExamen;
-                }
+    function setHoraInicio($horaInicio) {
+        $this->horaInicio = $horaInicio;
+    }
 
-		
-	}
+    function setFechaFin($fechaFin) {
+        $this->fechaFin = $fechaFin;
+    }
+
+    function setHoraFin($horaFin) {
+        $this->horaFin = $horaFin;
+    }
+
+    function setIdEstadoExamen($idEstadoExamen) {
+        $this->idEstadoExamen = $idEstadoExamen;
+    }
+
+}
+
 ?>

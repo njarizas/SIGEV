@@ -204,7 +204,7 @@ class RespuestasMySqlDAO implements RespuestasDAO {
         return $stmt->execute();
     }
 
-       public function actualizar($respuesta) {
+    public function actualizar($respuesta) {
         $query = 'UPDATE respuestas SET idpregunta=?, respuesta=? WHERE idrespuesta=?';
         $stmt = $this->conn->prepare($query);
         $stmt->bindparam(1, $respuesta->getIdPregunta());
@@ -212,7 +212,7 @@ class RespuestasMySqlDAO implements RespuestasDAO {
         $stmt->bindparam(3, $respuesta->getIdRespuesta());
         return $stmt->execute();
     }
-    
+
     public function obtenerUltimoRegistroInsertado() {
         $query = "SELECT * FROM respuestas ORDER BY idrespuesta DESC LIMIT 1";
         return $this->conn->query($query);

@@ -26,7 +26,7 @@
                     if (isset($_POST['registrar-curso'])) {
                         $nombreCurso = ($_POST["nombreCurso"]);
                         if ($cursosDAO->insertar($nombreCurso) > 0) {
-                            echo "<script>swal(\"Registro exitóso\", \"El curso: ".$nombreCurso." fue registrado exitósamente \", \"success\");</script>";
+                            echo "<script>swal(\"Registro exitóso\", \"El curso: " . $nombreCurso . " fue registrado exitósamente \", \"success\");</script>";
                         }
                     }
                     $nombreCurso = "";

@@ -60,7 +60,7 @@
                                     $respuesta = new Respuesta($pregunta->getIdPregunta(), $respuestaErronea[$i]);
                                     $respuestasDAO->insertar($respuesta);
                                 }
-                                echo "<script>swal(\"Registro exitóso\", \"La pregunta: ".$pregunta->getEnunciado()." fue registrada exitósamente \", \"success\");</script>";
+                                echo "<script>swal(\"Registro exitóso\", \"La pregunta: " . $pregunta->getEnunciado() . " fue registrada exitósamente \", \"success\");</script>";
                             }
                         }
                     }

@@ -11,5 +11,6 @@
  * @author Nelson
  */
 interface TipoDocumentoDaoInterface {
-    function insertar($nombre);   
+
+    function insertar($nombre);
 }

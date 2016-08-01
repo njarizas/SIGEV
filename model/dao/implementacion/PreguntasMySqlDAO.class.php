@@ -223,7 +223,6 @@ class PreguntasMySqlDAO implements PreguntasDAO {
     }
 
     public function actualizar($pregunta) {
-        echo 'entro a ponerle valor '.$pregunta->getValorPregunta().' a la pregunta'.$pregunta->getIdPregunta();
         $query = 'UPDATE preguntas SET enunciado=?, valorpregunta=?, idcurso=? WHERE idpregunta=?';
         $stmt = $this->conn->prepare($query);
         $stmt->bindparam(1, $pregunta->getEnunciado());
