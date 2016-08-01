@@ -10,6 +10,8 @@
         <script src="js/formValidation.min.js"></script> <!-- NEW!!! -->
         <script src="js/bootstrap.js"></script> <!-- NEW!!! -->
         <script src="js/es_ES.js"></script> <!-- NEW!!! -->
+        <script src="js/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
     </head>
     <body>
                 <?php
@@ -23,6 +25,7 @@
                 $confirmaContrasena = "";
                 if (isset($_POST['registrar-usuario'])) {
                     $idtipoDoc = ($_POST["tipoDoc"]);
+
                     $documento = ($_POST["documento"]);
                     $nombres = ($_POST["nombre"]);
                     $apellido1 = ($_POST["primerApellido"]);
@@ -30,9 +33,18 @@
                     $correo = ($_POST["correo"]);
                     $contrasena = ($_POST["contrasena"]);
                     $usuario = new Usuario($idtipoDoc, $documento, $nombres, $apellido1, $apellido2, $correo, $contrasena);
-                    if ($usuarioDAO->insertar($usuario) > 0) {
-                        echo "<script>alert('El usuario con correo \"".$usuario->getCorreo()."\" se registro exitosamente');</script>";
-                    }
+                    if ($usuarioDAO->obtenerUsuarioPorDocumento($documento)== $documento) {
+                        echo "<script>swal( \"no se pudo registar el usuario con el documento\" . $usuario->getDocumento() ., \"error\");</script>";
+                        if ($usuarioDAO->obtenerUsuarioPorCorreo($correo)== $correo) {
+                            echo "<script>swal( \"no se pudo registar el usuario con este correo\" . $usuario->getCorreo() ., \"error\");</script>";
+
+
+                            if ($usuarioDAO->insertar($usuario) > 0) {
+
+                                echo "<script>swal(\"Registro exitóso\", \"El usuario: " . $usuario->getCorreo() . " fue registrado exitósamente \", \"success\");</script>";
+                            }
+                        }
+                        }
                 }
                 $idtipoDoc = "";
                 $documento = "";
