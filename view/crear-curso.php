@@ -16,19 +16,18 @@
         <div class="container" style="background-color:#EEE;">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2" style="background-color:#FFF;">
-        <?php
-        include ("header.php");
-        require_once '../class/mysql/CursosMySqlDAO.class.php';
-
-        $cursosDAO = new CursosMySqlDAO();
-        if (isset($_POST['registrar-curso'])) {
-            $nombreCurso=($_POST["nombreCurso"]);
-            if ($cursosDAO->insertar($nombreCurso) > 0) {
-            echo "<script>alert('El curso \"".$nombreCurso."\" se agrego exitosamente');</script>";
-            }
-        }
-                    $nombreCurso="";
-        ?>
+                    <?php
+                    include ("header.php");
+                    require_once '../model/dao/implementacion/CursosMySqlDAO.class.php';
+                    $cursosDAO = new CursosMySqlDAO();
+                    if (isset($_POST['registrar-curso'])) {
+                        $nombreCurso = ($_POST["nombreCurso"]);
+                        if ($cursosDAO->insertar($nombreCurso) > 0) {
+                            echo "<script>alert('El curso \"" . $nombreCurso . "\" se agrego exitosamente');</script>";
+                        }
+                    }
+                    $nombreCurso = "";
+                    ?>
                     <div class="page-header">
                         <h2>Crear Cursos</h2>
                     </div>
@@ -43,7 +42,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="nombreCurso">Nombre del Curso:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" placeholder="Ej: Matemáticas" value="<?=$nombreCurso;?>" maxlength="45" required>
+                                <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" placeholder="Ej: Matemáticas" value="<?= $nombreCurso; ?>" maxlength="45" required>
                             </div>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3">
@@ -54,18 +53,18 @@
                     <br>
                     <hr>
                     <br>
-        <?php
-        $cursos=$cursosDAO->listarCursos();
-        if(count($cursos)>0){
-        echo '<div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"><table border="1" class="table table-hover"><tr><td>Id Doc</td><td>Documento</td></tr>';
-        }
-        foreach ($cursos as $fila) {
-            echo '<tr><td>' . $fila['idcurso'] . '</td>';
-            echo '<td>' . $fila['nombrecurso'] . '</td></tr>';
-        }
-        echo '</table></div></div>';
-        include ("footer.php");
-        ?>
+                    <?php
+                    $cursos = $cursosDAO->listarCursos();
+                    if (count($cursos) > 0) {
+                        echo '<div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"><table border="1" class="table table-hover"><tr><td>Id Doc</td><td>Documento</td></tr>';
+                    }
+                    foreach ($cursos as $fila) {
+                        echo '<tr><td>' . $fila['idcurso'] . '</td>';
+                        echo '<td>' . $fila['nombrecurso'] . '</td></tr>';
+                    }
+                    echo '</table></div></div>';
+                    include ("footer.php");
+                    ?>
                 </div>
             </div>
         </div>

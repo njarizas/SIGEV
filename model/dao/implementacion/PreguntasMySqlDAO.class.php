@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Class that operate on table 'respuestas'. Database Mysql.
+ * Class that operate on table 'preguntas'. Database Mysql.
  *
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
 require_once '../class/config/Database.class.php';
-require_once '../class/dao/respuestasDAO.class.php';
+require_once '../model/dao/interface/PreguntasDAO.class.php';
 
-class RespuestasMySqlDAO implements RespuestasDAO {
+class PreguntasMySqlDAO implements PreguntasDAO {
 
     private $conn;
 
@@ -21,10 +21,10 @@ class RespuestasMySqlDAO implements RespuestasDAO {
      * Get Domain object by primry key
      *
      * @param String $id primary key
-     * @return RespuestasMySql 
+     * @return PreguntasMySql 
      */
     public function load($id) {
-        $sql = 'SELECT * FROM respuestas WHERE idRespuesta = ?';
+        $sql = 'SELECT * FROM preguntas WHERE idPregunta = ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->setNumber($id);
         return $this->getRow($sqlQuery);
@@ -34,7 +34,7 @@ class RespuestasMySqlDAO implements RespuestasDAO {
      * Get all records from table
      */
     public function queryAll() {
-        $sql = 'SELECT * FROM respuestas';
+        $sql = 'SELECT * FROM preguntas';
         $sqlQuery = new SqlQuery($sql);
         return $this->getList($sqlQuery);
     }
@@ -45,52 +45,54 @@ class RespuestasMySqlDAO implements RespuestasDAO {
      * @param $orderColumn column name
      */
     public function queryAllOrderBy($orderColumn) {
-        $sql = 'SELECT * FROM respuestas ORDER BY ' . $orderColumn;
+        $sql = 'SELECT * FROM preguntas ORDER BY ' . $orderColumn;
         $sqlQuery = new SqlQuery($sql);
         return $this->getList($sqlQuery);
     }
 
     /**
      * Delete record from table
-     * @param respuesta primary key
+     * @param pregunta primary key
      */
-    public function delete($idRespuesta) {
-        $sql = 'DELETE FROM respuestas WHERE idRespuesta = ?';
+    public function delete($idPregunta) {
+        $sql = 'DELETE FROM preguntas WHERE idPregunta = ?';
         $sqlQuery = new SqlQuery($sql);
-        $sqlQuery->setNumber($idRespuesta);
+        $sqlQuery->setNumber($idPregunta);
         return $this->executeUpdate($sqlQuery);
     }
 
     /**
      * Insert record to table
      *
-     * @param RespuestasMySql respuesta
+     * @param PreguntasMySql pregunta
      */
-    public function insert($respuesta) {
-        $sql = 'INSERT INTO respuestas (idPregunta, respuesta) VALUES (?, ?)';
+    public function insert($pregunta) {
+        $sql = 'INSERT INTO preguntas (enunciado, valorPregunta, idCurso) VALUES (?, ?, ?)';
         $sqlQuery = new SqlQuery($sql);
 
-        $sqlQuery->setNumber($respuesta->idPregunta);
-        $sqlQuery->set($respuesta->respuesta);
+        $sqlQuery->set($pregunta->enunciado);
+        $sqlQuery->setNumber($pregunta->valorPregunta);
+        $sqlQuery->setNumber($pregunta->idCurso);
 
         $id = $this->executeInsert($sqlQuery);
-        $respuesta->idRespuesta = $id;
+        $pregunta->idPregunta = $id;
         return $id;
     }
 
     /**
      * Update record in table
      *
-     * @param RespuestasMySql respuesta
+     * @param PreguntasMySql pregunta
      */
-    public function update($respuesta) {
-        $sql = 'UPDATE respuestas SET idPregunta = ?, respuesta = ? WHERE idRespuesta = ?';
+    public function update($pregunta) {
+        $sql = 'UPDATE preguntas SET enunciado = ?, valorPregunta = ?, idCurso = ? WHERE idPregunta = ?';
         $sqlQuery = new SqlQuery($sql);
 
-        $sqlQuery->setNumber($respuesta->idPregunta);
-        $sqlQuery->set($respuesta->respuesta);
+        $sqlQuery->set($pregunta->enunciado);
+        $sqlQuery->setNumber($pregunta->valorPregunta);
+        $sqlQuery->setNumber($pregunta->idCurso);
 
-        $sqlQuery->setNumber($respuesta->idRespuesta);
+        $sqlQuery->setNumber($pregunta->idPregunta);
         return $this->executeUpdate($sqlQuery);
     }
 
@@ -98,52 +100,67 @@ class RespuestasMySqlDAO implements RespuestasDAO {
      * Delete all rows
      */
     public function clean() {
-        $sql = 'DELETE FROM respuestas';
+        $sql = 'DELETE FROM preguntas';
         $sqlQuery = new SqlQuery($sql);
         return $this->executeUpdate($sqlQuery);
     }
 
-    public function queryByIdPregunta($value) {
-        $sql = 'SELECT * FROM respuestas WHERE idPregunta = ?';
-        $sqlQuery = new SqlQuery($sql);
-        $sqlQuery->setNumber($value);
-        return $this->getList($sqlQuery);
-    }
-
-    public function queryByRespuesta($value) {
-        $sql = 'SELECT * FROM respuestas WHERE respuesta = ?';
+    public function queryByEnunciado($value) {
+        $sql = 'SELECT * FROM preguntas WHERE enunciado = ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->set($value);
         return $this->getList($sqlQuery);
     }
 
-    public function deleteByIdPregunta($value) {
-        $sql = 'DELETE FROM respuestas WHERE idPregunta = ?';
+    public function queryByValorPregunta($value) {
+        $sql = 'SELECT * FROM preguntas WHERE valorPregunta = ?';
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($value);
+        return $this->getList($sqlQuery);
+    }
+
+    public function queryByIdCurso($value) {
+        $sql = 'SELECT * FROM preguntas WHERE idCurso = ?';
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($value);
+        return $this->getList($sqlQuery);
+    }
+
+    public function deleteByEnunciado($value) {
+        $sql = 'DELETE FROM preguntas WHERE enunciado = ?';
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->set($value);
+        return $this->executeUpdate($sqlQuery);
+    }
+
+    public function deleteByValorPregunta($value) {
+        $sql = 'DELETE FROM preguntas WHERE valorPregunta = ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->setNumber($value);
         return $this->executeUpdate($sqlQuery);
     }
 
-    public function deleteByRespuesta($value) {
-        $sql = 'DELETE FROM respuestas WHERE respuesta = ?';
+    public function deleteByIdCurso($value) {
+        $sql = 'DELETE FROM preguntas WHERE idCurso = ?';
         $sqlQuery = new SqlQuery($sql);
-        $sqlQuery->set($value);
+        $sqlQuery->setNumber($value);
         return $this->executeUpdate($sqlQuery);
     }
 
     /**
      * Read row
      *
-     * @return RespuestasMySql 
+     * @return PreguntasMySql 
      */
     protected function readRow($row) {
-        $respuesta = new Respuesta();
+        $pregunta = new Pregunta();
 
-        $respuesta->idRespuesta = $row['idRespuesta'];
-        $respuesta->idPregunta = $row['idPregunta'];
-        $respuesta->respuesta = $row['respuesta'];
+        $pregunta->idPregunta = $row['idPregunta'];
+        $pregunta->enunciado = $row['enunciado'];
+        $pregunta->valorPregunta = $row['valorPregunta'];
+        $pregunta->idCurso = $row['idCurso'];
 
-        return $respuesta;
+        return $pregunta;
     }
 
     protected function getList($sqlQuery) {
@@ -158,7 +175,7 @@ class RespuestasMySqlDAO implements RespuestasDAO {
     /**
      * Get row
      *
-     * @return RespuestasMySql 
+     * @return PreguntasMySql 
      */
     protected function getRow($sqlQuery) {
         $tab = QueryExecutor::execute($sqlQuery);
@@ -196,25 +213,28 @@ class RespuestasMySqlDAO implements RespuestasDAO {
         return QueryExecutor::executeInsert($sqlQuery);
     }
 
-    public function insertar($respuesta) {
-        $query = 'INSERT INTO respuestas (idpregunta, respuesta) VALUES (?,?)';
+    public function insertar($pregunta) {
+        $query = 'INSERT INTO preguntas (enunciado, valorpregunta, idcurso) VALUES (?, ?, ?)';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindparam(1, $respuesta->getIdPregunta());
-        $stmt->bindparam(2, $respuesta->getRespuesta());
+        $stmt->bindparam(1, $pregunta->getEnunciado());
+        $stmt->bindparam(2, $pregunta->getValorPregunta());
+        $stmt->bindparam(3, $pregunta->getIdCurso());
         return $stmt->execute();
     }
 
-       public function actualizar($respuesta) {
-        $query = 'UPDATE respuestas SET idpregunta=?, respuesta=? WHERE idrespuesta=?';
+    public function actualizar($pregunta) {
+        echo 'entro a ponerle valor '.$pregunta->getValorPregunta().' a la pregunta'.$pregunta->getIdPregunta();
+        $query = 'UPDATE preguntas SET enunciado=?, valorpregunta=?, idcurso=? WHERE idpregunta=?';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindparam(1, $respuesta->getIdPregunta());
-        $stmt->bindparam(2, $respuesta->getRespuesta());
-        $stmt->bindparam(3, $respuesta->getIdRespuesta());
+        $stmt->bindparam(1, $pregunta->getEnunciado());
+        $stmt->bindparam(2, $pregunta->getValorPregunta());
+        $stmt->bindparam(3, $pregunta->getIdCurso());
+        $stmt->bindparam(4, $pregunta->getIdPregunta());
         return $stmt->execute();
     }
-    
+
     public function obtenerUltimoRegistroInsertado() {
-        $query = "SELECT * FROM respuestas ORDER BY idrespuesta DESC LIMIT 1";
+        $query = "SELECT * FROM preguntas ORDER BY idpregunta DESC LIMIT 1";
         return $this->conn->query($query);
     }
 

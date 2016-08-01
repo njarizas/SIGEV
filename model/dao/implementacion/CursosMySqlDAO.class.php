@@ -1,32 +1,29 @@
 <?php
 /**
- * Class that operate on table 'tiposdocumentos'. Database Mysql.
+ * Class that operate on table 'cursos'. Database Mysql.
  *
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
 require_once '../class/config/Database.class.php';
-require_once '../class/dao/TiposdocumentosDAO.class.php';
+require_once '../model/dao/interface/CursosDAO.class.php';
 
-class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
+class CursosMySqlDAO implements CursosDAO{
 
+    
+      private $conn;
+    
+    function __construct() {
+        $this->conn= Database::connect();
+    }
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return TiposdocumentosMySql 
+	 * @return CursosMySql 
 	 */
-	private $conn;
-
-	/**
-	 * UsuariosMySqlDAO constructor.
-	 * @param $conn
-	 */
-	function __construct() {
-		$this->conn= Database::connect();
-	}
 	public function load($id){
-		$sql = 'SELECT * FROM tiposdocumentos WHERE idTipoDocumento = ?';
+		$sql = 'SELECT * FROM cursos WHERE idCurso = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -36,7 +33,7 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM tiposdocumentos';
+		$sql = 'SELECT * FROM cursos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -47,50 +44,50 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM tiposdocumentos ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM cursos ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
 	
 	/**
  	 * Delete record from table
- 	 * @param tiposdocumento primary key
+ 	 * @param curso primary key
  	 */
-	public function delete($idTipoDocumento){
-		$sql = 'DELETE FROM tiposdocumentos WHERE idTipoDocumento = ?';
+	public function delete($idCurso){
+		$sql = 'DELETE FROM cursos WHERE idCurso = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($idTipoDocumento);
+		$sqlQuery->setNumber($idCurso);
 		return $this->executeUpdate($sqlQuery);
 	}
 	
 	/**
  	 * Insert record to table
  	 *
- 	 * @param TiposdocumentosMySql tiposdocumento
+ 	 * @param CursosMySql curso
  	 */
-	public function insert($tiposdocumento){
-		$sql = 'INSERT INTO tiposdocumentos (nombreDocumento) VALUES (?)';
+	public function insert($curso){
+		$sql = 'INSERT INTO cursos (nombreCurso) VALUES (?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($tiposdocumento->nombreDocumento);
+		$sqlQuery->set($curso->nombreCurso);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$tiposdocumento->idTipoDocumento = $id;
+		$curso->idCurso = $id;
 		return $id;
 	}
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param TiposdocumentosMySql tiposdocumento
+ 	 * @param CursosMySql curso
  	 */
-	public function update($tiposdocumento){
-		$sql = 'UPDATE tiposdocumentos SET nombreDocumento = ? WHERE idTipoDocumento = ?';
+	public function update($curso){
+		$sql = 'UPDATE cursos SET nombreCurso = ? WHERE idCurso = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($tiposdocumento->nombreDocumento);
+		$sqlQuery->set($curso->nombreCurso);
 
-		$sqlQuery->setNumber($tiposdocumento->idTipoDocumento);
+		$sqlQuery->setNumber($curso->idCurso);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -98,37 +95,40 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM tiposdocumentos';
+		$sql = 'DELETE FROM cursos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function queryByNombreDocumento($value){
-		$sql = 'SELECT * FROM tiposdocumentos WHERE nombreDocumento = ?';
+	public function queryByNombreCurso($value){
+		$sql = 'SELECT * FROM cursos WHERE nombreCurso = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function deleteByNombreDocumento($value){
-		$sql = 'DELETE FROM tiposdocumentos WHERE nombreDocumento = ?';
+
+	public function deleteByNombreCurso($value){
+		$sql = 'DELETE FROM cursos WHERE nombreCurso = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
+
+
 	
 	/**
 	 * Read row
 	 *
-	 * @return TiposdocumentosMySql 
+	 * @return CursosMySql 
 	 */
 	protected function readRow($row){
-		$tiposdocumento = new Tiposdocumento();
+		$curso = new Curso();
 		
-		$tiposdocumento->idTipoDocumento = $row['idTipoDocumento'];
-		$tiposdocumento->nombreDocumento = $row['nombreDocumento'];
+		$curso->idCurso = $row['idCurso'];
+		$curso->nombreCurso = $row['nombreCurso'];
 
-		return $tiposdocumento;
+		return $curso;
 	}
 	
 	protected function getList($sqlQuery){
@@ -143,7 +143,7 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	/**
 	 * Get row
 	 *
-	 * @return TiposdocumentosMySql 
+	 * @return CursosMySql 
 	 */
 	protected function getRow($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);
@@ -159,6 +159,7 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 	protected function execute($sqlQuery){
 		return QueryExecutor::execute($sqlQuery);
 	}
+	
 		
 	/**
 	 * Execute sql query
@@ -181,27 +182,25 @@ class TiposdocumentosMySqlDAO implements TiposdocumentosDAO{
 		return QueryExecutor::executeInsert($sqlQuery);
 	}
 
+    public function listarCursos() {
+    $query="SELECT * FROM cursos ORDER BY nombrecurso";
+    return $this->conn->query($query);
+    }
+    
+    public function insertar($nombreCurso) {
+    $query="INSERT INTO cursos (nombrecurso) VALUES(?)";
+    $stmt=  $this->conn->prepare($query);
+    $stmt->bindparam(1,$nombreCurso);
+    return $stmt->execute();
+    }
+    
+    function getConn() {
+        return $this->conn;
+    }
 
-	public function listarDoc() {
-		$query ="SELECT * FROM tiposdocumentos";
-		return $this->conn->query($query);
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getConn()
-	{
-		return $this->conn;
-	}
-
-	/**
-	 * @param mixed $conn
-	 */
-	public function setConn($conn)
-	{
-		$this->conn = $conn;
-	}
+    function setConn($conn) {
+        $this->conn = $conn;
+    }
 	
 }
 ?>

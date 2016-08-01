@@ -7,7 +7,7 @@ require_once 'class/dao/TipoDocumentoDaoImplementacion.php';
 
 //echo phpinfo();
 $conexion = Database::connect();
-$tipoDocDao = new TipoDocumentoDaoImplementacion();
+$tipoDocDAO = new TipoDocumentoDaoImplementacion();
 if (!$conexion) {
     echo 'hay un error';
 } else {

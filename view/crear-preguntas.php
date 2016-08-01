@@ -18,11 +18,11 @@
                 <div class="col-sm-8 col-sm-offset-2" style="background-color:#FFF;">
                     <?php
                     include ("header.php");
-                    require_once '../class/mysql/CursosMySqlDAO.class.php';
-                    require_once '../class/mysql/PreguntasMySqlDAO.class.php';
-                    require_once '../class/mysql/RespuestasMySqlDAO.class.php';
-                    require_once '../class/dto/Pregunta.class.php';
-                    require_once '../class/dto/Respuesta.class.php';
+                    require_once '../model/dao/implementacion/CursosMySqlDAO.class.php';
+                    require_once '../model/dao/implementacion/PreguntasMySqlDAO.class.php';
+                    require_once '../model/dao/implementacion/RespuestasMySqlDAO.class.php';
+                    require_once '../model/dto/Pregunta.class.php';
+                    require_once '../model/dto/Respuesta.class.php';
                     $cursosDAO = new CursosMySqlDAO();
                     $preguntasDAO = new PreguntasMySqlDAO();
                     $respuestasDAO = new RespuestasMySqlDAO();
@@ -50,11 +50,10 @@
                                     if ($objRespuestaCorrecta->getIdPregunta() == $fila2['idpregunta'] &&
                                             $objRespuestaCorrecta->getRespuesta() == $fila2['respuesta']) {
                                         $pregunta->setValorPregunta($fila2['idrespuesta']);
-                                        echo 'valor'.$fila2['idrespuesta'];
                                     }
                                 }
                                 $preguntasDAO->actualizar($pregunta);
-                                for ($i=0;$i<4;$i++) {
+                                for ($i = 0; $i < 4; $i++) {
                                     $respuesta = new Respuesta($pregunta->getIdPregunta(), $respuestaErronea[$i]);
                                     $respuestasDAO->insertar($respuesta);
                                 }
