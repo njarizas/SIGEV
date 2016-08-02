@@ -245,6 +245,10 @@ class PreguntasMySqlDAO implements PreguntasDAO {
         $this->conn = $conn;
     }
 
+    public function listarPreguntas() {
+        $query = "SELECT * FROM  preguntas ORDER BY idpregunta";
+        return $this->conn->query($query);
+    }
 }
 
 ?>
