@@ -300,12 +300,14 @@ class UsuariosMySqlDAO implements UsuariosDAO {
     }
 
     public function obtenerUsuarioPorDocumento($doc) {
-        $query = "SELECT * FROM usuarios WHERE documento='".$doc."'";
+        $query = "SELECT idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave"
+                . " FROM usuarios WHERE documento='".$doc."'";
         return $this->conn->query($query);
     }
 
     public function obtenerUsuarioPorCorreo($correo) {
-        $query = "SELECT * FROM usuarios WHERE correo='".$correo."'";
+        $query = "SELECT idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave"
+                . " FROM usuarios WHERE correo='".$correo."'";
         return $this->conn->query($query);
     }
 
