@@ -37,17 +37,94 @@
                     if (count($usuarioslis) > 0) {
                         echo '<div class="row"><div class="col-xs-12 col-sm-10 col-sm-offset-1">'
                         . '<table border="1" class="table table-hover">'
-                        . '<tr><td>Documento</td><td>Nombres</td><td>Apellidos</td><td>Correo</td></tr>';
+                        . '<tr><td>Documento</td><td>Nombres</td><td>Apellidos</td><td>Correo</td>'
+                        . '<td>Acción a realizar</td></tr>';
                     }
+
                     foreach ($usuarioslis as $fila) {
-                        echo '<tr><td>' . $fila['documento'] . '</td>';
-                        echo '<td>' . $fila['nombres'] . '</td>';
-                        echo '<td>' . trim($fila['apellido1']) . ' ' . $fila['apellido2'] . '</td>';
-                        echo '<td>' . $fila['correo'] . '</td></tr>';
+                        echo '<tr>'
+                        . '<td>' . $fila['documento'] . '</td>';
+                      echo'<td>' . $fila['nombres'] . '</td>';
+                      echo'<td>' . trim($fila['apellido1']) . ' ' . $fila['apellido2'] . '</td>';
+                      echo'<td>' . $fila['correo'] . '</td></tr>';
+                                            
                     }
                     echo '</table></div></div>';
-                    include ("footer.php");
+                                       
+                     $usuarioDAO = new UsuariosMySqlDAO;
+
+                    if (isset($_POST['listarUsuarios'])) {
+                        
+                        $documento = ($_POST["documento"]);
+                        $nombres($_POST["nombres"]);
+                        $apellido1 = ($_POST["apellido1"]);
+                        $apellido2 = ($_POST["apellido2"]);
+                        $correo = ($_POST["correo"]);
+
+                        $usuario = new Usuario($documento, $nombres, $apellido1, $apellido2, $correo, $clave);
+
+                        if ($usuarioDAO->updateTablaUsuarios($usuario)) {
+                            $usuario->_SET($documento);
+                            $usuario->_SET($nombres);
+                            $usuario->_SET($apellido1);
+                            $usuario->_SET($apellido2);
+                            $usuario->_SET($correo);
+                        }
+                    }
+                
+                    
                     ?>
+                    
+                    <form id="editarusuario" method="post" class="form-horizontal" action="listarUsuarios.php">
+                     
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="documento">Documento:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="documento" name="documento"
+                                       
+                            </div>
+                        </div> 
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="nombres">Nombres:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="nombres" name="nombres"
+                                       
+                            </div>
+                        </div>
+                         <br>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="apellido1">Primer Apellido:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="apellido1" name="apellido1"
+                                       
+                            </div>
+                        </div>
+                         <br>
+                        <br>
+                         <div class="form-group">
+                            <label class="col-sm-3 control-label" for="apellido1">Segundo Apellido:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="apellido2" name="apellido2"
+                                       
+                            </div>
+                        </div>
+                         <br>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="correo">Correo:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="correo" name="correo"
+                                       
+                            </div>
+                        </div>
+
+
+
+                    </form>
                 </div >
             </div >
         </div >
@@ -182,6 +259,7 @@
                     }
                 });
             });
+            include("footer.php");
         </script>
     </body>
 </html>

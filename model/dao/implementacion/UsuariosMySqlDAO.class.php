@@ -318,6 +318,23 @@ class UsuariosMySqlDAO implements UsuariosDAO {
     public function setConn($conn) {
         $this->conn = $conn;
     }
+    
+// Editar Usuarios
+        public function updateTablaUsuarios($usuario) {
+        $sql = 'UPDATE usuarios SET documento = ?, '
+                . 'nombres = ?, apellido1 = ?, apellido2 = ?, clave = ? '
+                . 'WHERE idUsuario = ?';
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindparam($usuario->setDocumento());
+        $stmt->bindparam($usuario->setNombres());
+        $stmt->bindparam($usuario->setApellido1());
+        $stmt->bindparam($usuario->setApellido2());
+        $stmt->bindparam($usuario->setClave());
+        return $stmt->execute();
+        
+        
+    }
 
 }
 
