@@ -5,6 +5,7 @@
         <title>Iniciar sesión</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/formValidation.min.css"> <!-- NEW!!! -->
+        <link rel="stylesheet" type="text/css" href="css/estilosSigev.css">
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/formValidation.min.js"></script> <!-- NEW!!! -->
