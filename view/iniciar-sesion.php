@@ -98,11 +98,12 @@
                             </div>
                         </div>
                     </form>
+                </div >
+            </div >                    
 <?php
 include ("footer.php");
 ?>
-                </div >
-            </div >
+
         </div >
 
         <script type = "text/javascript">
