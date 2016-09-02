@@ -12,5 +12,4 @@
  */
 interface DAO {
     public function listarTodos();
-    public function insertar();
 }

@@ -1,8 +1,4 @@
 
-html{
-  background-image:
-}
-
 body{
   width: 100%;
 	background-color: #5C5C5C;
@@ -39,8 +35,8 @@ nav li{
 z-index: 1000;
 }
 
-nav li > a:hover;{
-background-color: balck !important;
+nav li > a:hover{
+background-color: black !important;
 color: white !important;
 }
 

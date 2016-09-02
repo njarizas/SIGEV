@@ -9,7 +9,7 @@
 require_once '../class/config/Database.class.php';
 require_once '../model/dao/interface/CursosDAO.class.php';
 
-class CursosMySqlDAO implements DAO {
+class CursosMySqlDAO implements CursosDAO {
 
     private $conn;
 
@@ -21,8 +21,8 @@ class CursosMySqlDAO implements DAO {
         $query = "SELECT * FROM cursos ORDER BY nombrecurso";
         return $this->conn->query($query);
     }
-
-    public function listarTodos() {
+    
+        public function listarTodos() {
         $query = "SELECT * FROM cursos ORDER BY nombrecurso";
         return $this->conn->query($query);
     }
