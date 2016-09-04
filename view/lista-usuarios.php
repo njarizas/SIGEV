@@ -13,8 +13,7 @@
         <script src="js/sweetalert-dev.js"></script>
         <link rel="stylesheet" href="css/sweetalert.css">
     </head>
-    <body>   
-                 <form id="editarusuario" method="get" class="form-horizontal" action="lista-usuarios.php">
+    <body>
         <div class="container" style="background-color:#EEE;">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2" style="background-color:#FFF;">
@@ -25,6 +24,7 @@
                     require_once '../model/dao/implementacion/TiposdocumentosMySqlDAO.class.php';
                     $usuarioDAO = new UsuariosMySqlDAO();
                     ?>
+                 <form id="editar-usuario" method="POST" class="form-horizontal" action="editar-usuario.php">
                     <div class="page-header">
                         <h2>Lista de usuarios</h2>
                     </div>
@@ -48,53 +48,40 @@
                       echo'<td>' . $fila['nombres'] . '</td>';
                       echo'<td>' . trim($fila['apellido1']) . ' ' . $fila['apellido2'] . '</td>';
                       echo'<td>' . $fila['correo'] . '</td>';
-                      echo'<td> <button type="submit" class="btn btn-primary" name="editar-usuario"
+                      echo'<td> <button type="submit" class="btn btn-primary" action="editar-usuario"
                                         value="'. $fila['documento'] .'">Editar
-                                      
+
                                 </button> </td></tr>';
-                                            
+
                     }
                     echo '</table></div></div>';
-                                       
+
                      $usuarioDAO = new UsuariosMySqlDAO;
 
                     if (isset($_POST['editar-usuario'])) {
-                        
+
                         $documento = ($_POST["editar-usuario"]);
                         echo $documento;
                         echo '<script>alert("hola")</script>';
                         $usuario = $usuarioDAO->obtenerUsuarioPorDocumento($documento);
                         $documento = $usuario->getDocumento();
-//                        $documento = ($_POST["documento"]);
-//                        $nombres($_POST["nombres"]);
-//                        $apellido1 = ($_POST["apellido1"]);
-//                        $apellido2 = ($_POST["apellido2"]);
-//                        $correo = ($_POST["correo"]);
-//
-//                        $usuario = new Usuario($documento, $nombres, $apellido1, $apellido2, $correo, $clave);
-//
-//                        if ($usuarioDAO->updateTablaUsuarios($usuario)) {
-//                            $usuario->_SET($documento);
-//                            $usuario->_SET($nombres);
-//                            $usuario->_SET($apellido1);
-//                            $usuario->_SET($apellido2);
-//                            $usuario->_SET($correo);
-//                        }
                     }
-                
-                    
+
+
                     ?>
-           
-                    
-                     
+
+
+
+
+
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="documento">Documento:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="documento" name="documento" value="<?= $documento; ?>"
-                                       
+                                <input type="text" class="form-control" id="documento" name="documento" value="">
+
                             </div>
-                        </div> 
+                        </div>
                         <br>
                         <br>
                         <div class="form-group">
