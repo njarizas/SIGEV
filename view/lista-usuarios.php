@@ -2,9 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Registro Usuario</title>
+        <title>Lista Usuario</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/formValidation.min.css"> <!-- NEW!!! -->
+        <link rel="stylesheet" type="text/css" href="css/estilosSigev.css">
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/formValidation.min.js"></script> <!-- NEW!!! -->
@@ -13,7 +14,12 @@
         <script src="js/sweetalert-dev.js"></script>
         <link rel="stylesheet" href="css/sweetalert.css">
     </head>
+<<<<<<< HEAD
     <body>
+=======
+    <body>   
+        <form id="editarusuario" method="get" class="form-horizontal" action="lista-usuarios.php">
+>>>>>>> 39544e37bcc3a22537d30c31f7cbe0c658034986
         <div class="container" style="background-color:#EEE;">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2" style="background-color:#FFF;">
@@ -66,6 +72,7 @@
                         $usuario = $usuarioDAO->obtenerUsuarioPorDocumento($documento);
                         $documento = $usuario->getDocumento();
                     }
+<<<<<<< HEAD
 
 
                     ?>
@@ -74,55 +81,59 @@
 
 
 
+=======
+                    ?>
+>>>>>>> 39544e37bcc3a22537d30c31f7cbe0c658034986
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="documento">Documento:</label>
                             <div class="col-sm-5">
+<<<<<<< HEAD
                                 <input type="text" class="form-control" id="documento" name="documento" value="">
 
                             </div>
                         </div>
                         <br>
                         <br>
+=======
+                                <input type="text" class="form-control" id="documento" name="documento" value="">     
+                            </div> 
+                        </div> 
+
+>>>>>>> 39544e37bcc3a22537d30c31f7cbe0c658034986
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="nombres">Nombres:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="nombres" name="nombres"
-                                       
+                                <input type="text" class="form-control" id="nombres" name="nombres">        
                             </div>
                         </div>
-                         <br>
-                        <br>
+
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="apellido1">Primer Apellido:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="apellido1" name="apellido1"
-                                       
+                                <input type="text" class="form-control" id="apellido1" name="apellido1">         
                             </div>
                         </div>
-                         <br>
-                        <br>
-                         <div class="form-group">
+
+                        <div class="form-group">
                             <label class="col-sm-3 control-label" for="apellido1">Segundo Apellido:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="apellido2" name="apellido2"
-                                       
+                                <input type="text" class="form-control" id="apellido2" name="apellido2">         
                             </div>
                         </div>
-                         <br>
-                        <br>
+
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="correo">Correo:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="correo" name="correo"
-                                       
+                                <input type="text" class="form-control" id="correo" name="correo"> 
                             </div>
                         </div>
-
-
-
                 </div >
             </div >
+            <?php
+                include ("footer.php");
+            ?>
+
         </div >
                     </form>
 
@@ -256,7 +267,7 @@
                     }
                 });
             });
-            include("footer.php");
+            
         </script>
     </body>
 </html>

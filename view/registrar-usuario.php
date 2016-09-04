@@ -51,7 +51,7 @@
                         else if ($usuExiste2->rowCount() > 0) {
                             echo "<script>swal(\"Registro fallido\",\"ya existe un usuario registrado con correo " . $usuario->getCorreo() . "\", \"error\");</script>";
                         }
-                        elseif ($usuarioDAO->insertar($usuario) > 0) {
+                        else if ($usuarioDAO->insertar($usuario) > 0) {
                             echo "<script>swal(\"Registro exitóso\", \"El usuario: " . $usuario->getCorreo() . " fue registrado exitósamente \", \"success\");</script>";
                             $idtipoDoc = "";
                             $documento = "";

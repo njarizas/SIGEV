@@ -1,0 +1,64 @@
+
+body{
+  width: 100%;
+	background-color: #5C5C5C;
+	color:gray;
+}
+
+.centrardiv {text-align:center;}
+
+#div {text-align:center;}
+
+span{
+
+  color: black;
+}
+
+#estiloRegistro{
+  background-color: #45626F;
+}
+
+  .resaltado{
+
+    font-weight: bold;
+    color: #3669a3;
+  }
+  
+  .fuente1 {
+    font-family: arial;
+    font-size: 25px;
+    box-sizing: border-box;
+  }
+
+nav li{
+
+z-index: 1000;
+}
+
+nav li > a:hover{
+background-color: black !important;
+color: white !important;
+}
+
+.row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+
+footer{
+  
+  margin: auto;
+  border-top: 5px double #3669a3;
+  margin-right: 50px;
+  margin-left: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  color:gray;
+}
+
+footer ul {
+list-style:none;
+
+}

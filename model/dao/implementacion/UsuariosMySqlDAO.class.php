@@ -326,11 +326,6 @@ class UsuariosMySqlDAO implements UsuariosDAO {
                 . 'WHERE idUsuario = ?';
         
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindparam($usuario->setDocumento());
-        $stmt->bindparam($usuario->setNombres());
-        $stmt->bindparam($usuario->setApellido1());
-        $stmt->bindparam($usuario->setApellido2());
-        $stmt->bindparam($usuario->setClave());
         return $stmt->execute();
         
         
