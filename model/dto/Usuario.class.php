@@ -16,8 +16,10 @@ class Usuario {
     private $apellido2;
     private $correo;
     private $clave;
+    private $ficha;
+    private $rol;
 
-    function __construct($idTipoDocumento, $documento, $nombres, $apellido1, $apellido2, $correo, $clave) {
+    function __construct($idTipoDocumento, $documento, $nombres, $apellido1, $apellido2, $correo, $clave,$ficha,$rol) {
         $this->idTipoDocumento = $idTipoDocumento;
         $this->documento = $documento;
         $this->nombres = $nombres;
@@ -25,6 +27,8 @@ class Usuario {
         $this->apellido2 = $apellido2;
         $this->correo = $correo;
         $this->clave = $clave;
+        $this->ficha = $ficha;
+        $this->rol = $rol;
     }
 
     public function getIdUsuario() {
@@ -99,6 +103,20 @@ class Usuario {
         return $this;
     }
 
-}
+    function getFicha() {
+        return $this->ficha;
+    }
 
-?>
+    function getRol() {
+        return $this->rol;
+    }
+
+    function setFicha($ficha) {
+        $this->ficha = $ficha;
+    }
+
+    function setRol($rol) {
+        $this->rol = $rol;
+    }
+
+}

@@ -11,5 +11,3 @@ require_once 'DAO.php';
 interface CursosDAO extends DAO {
     public function insertar($nombreCurso);
 }
-
-?>

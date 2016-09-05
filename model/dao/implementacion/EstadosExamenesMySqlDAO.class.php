@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Class that operate on table 'cursos'. Database Mysql.
+ * Class that operate on table 'estadosexamenes'. Database Mysql.
  *
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
 require_once '../class/config/Database.class.php';
-require_once '../model/dao/interface/CursosDAO.class.php';
+require_once '../model/dao/interface/EstadosExamenesDAO.class.php';
 
-class CursosMySqlDAO implements CursosDAO {
+class EstadosExamenesMySqlDAO implements EstadosExamenesDAO {
 
     private $conn;
 
@@ -18,14 +18,14 @@ class CursosMySqlDAO implements CursosDAO {
     }
 
     public function listarTodos() {
-        $query = "SELECT * FROM cursos ORDER BY nombrecurso";
+        $query = "SELECT * FROM estadosexamenes ORDER BY nombreestadoexamen";
         return $this->conn->query($query);
     }
 
-    public function insertar($nombreCurso) {
-        $query = "INSERT INTO cursos (nombrecurso) VALUES(?)";
+    public function insertar($nombreEstadoExamen) {
+        $query = "INSERT INTO estadosexamenes (nombreestadoexamen) VALUES(?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindparam(1, $nombreCurso);
+        $stmt->bindparam(1, $nombreEstadoExamen);
         return $stmt->execute();
     }
 
