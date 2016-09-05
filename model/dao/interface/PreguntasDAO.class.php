@@ -6,6 +6,11 @@
  * @author: http://phpdao.com
  * @date: 2016-07-24 18:58
  */
-interface PreguntasDAO {
-    
+
+require_once 'DAO.php';
+
+interface PreguntasDAO extends DAO{
+
 }
+
+?>
