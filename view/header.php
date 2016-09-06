@@ -32,6 +32,7 @@
                                     <li><a href="#">Ver Resultados de Examenes</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
                                     <li><a href="iniciar-sesion.php">Cerrar Sesion</a></li>
                                 </ul>
                             </nav>
@@ -41,10 +42,11 @@
                             <nav class="navbar navbar-default menu">
                                 <ul class="nav navbar-nav">
                                     <li><a href="crear-preguntas.php">Crear Preguntas</a></li>
-                                    <li><a href="#">Crear Examen</a></li>
+                                    <li><a href="crear-examen.php">Crear Examen</a></li>
                                     <li><a href="#">Ver Resultados de Examenes</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
                                     <li><a href="iniciar-sesion.php">Cerrar Sesion</a></li>
                                 </ul>
                             </nav>
@@ -63,6 +65,7 @@
                                             <li><a href="crear-tipo-documento.php">Crear Tipo Documento</a></li>
                                         </ul>
                                     </li>
+                                    <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
                                     <li><a href="registrar-usuario.php">Registrar Usuarios</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">

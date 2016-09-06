@@ -17,4 +17,10 @@ interface UsuariosDAO extends DAO {
     public function obtenerUsuarioPorCorreo($correo);
 
     public function actualizarUsuario($usuario);
+    
+    public function listarEstudiantes();
+    
+    public function listarProfesores();
+    
+    public function listarAdministrativos();
 }

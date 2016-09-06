@@ -12,19 +12,17 @@ class Examen {
     private $idCurso;
     private $idProfesor;
     private $fechaInicio;
-    private $horaInicio;
     private $fechaFin;
-    private $horaFin;
     private $idEstadoExamen;
+    private $ficha;
 
-    function __construct($idCurso, $idProfesor, $fechaInicio, $horaInicio, $fechaFin, $horaFin, $idEstadoExamen) {
+    function __construct($idCurso, $idProfesor, $fechaInicio, $fechaFin, $idEstadoExamen,$ficha) {
         $this->idCurso = $idCurso;
         $this->idProfesor = $idProfesor;
         $this->fechaInicio = $fechaInicio;
-        $this->horaInicio = $horaInicio;
         $this->fechaFin = $fechaFin;
-        $this->horaFin = $horaFin;
         $this->idEstadoExamen = $idEstadoExamen;
+        $this->ficha = $ficha;
     }
 
     function getIdExamen() {
@@ -43,16 +41,8 @@ class Examen {
         return $this->fechaInicio;
     }
 
-    function getHoraInicio() {
-        return $this->horaInicio;
-    }
-
     function getFechaFin() {
         return $this->fechaFin;
-    }
-
-    function getHoraFin() {
-        return $this->horaFin;
     }
 
     function getIdEstadoExamen() {
@@ -75,22 +65,20 @@ class Examen {
         $this->fechaInicio = $fechaInicio;
     }
 
-    function setHoraInicio($horaInicio) {
-        $this->horaInicio = $horaInicio;
-    }
-
     function setFechaFin($fechaFin) {
         $this->fechaFin = $fechaFin;
-    }
-
-    function setHoraFin($horaFin) {
-        $this->horaFin = $horaFin;
     }
 
     function setIdEstadoExamen($idEstadoExamen) {
         $this->idEstadoExamen = $idEstadoExamen;
     }
+    
+    function getFicha() {
+        return $this->ficha;
+    }
+
+    function setFicha($ficha) {
+        $this->ficha = $ficha;
+    }
 
 }
-
-?>

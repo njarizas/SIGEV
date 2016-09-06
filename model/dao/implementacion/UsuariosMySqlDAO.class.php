@@ -38,13 +38,13 @@ class UsuariosMySqlDAO implements UsuariosDAO {
     }
 
     public function obtenerUsuarioPorDocumento($doc) {
-        $query = "SELECT idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave,ficha,rol"
+        $query = "SELECT idusuario,idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave,ficha,rol"
                 . " FROM usuarios WHERE documento='" . $doc . "'";
         return $this->conn->query($query);
     }
 
     public function obtenerUsuarioPorCorreo($correo) {
-        $query = "SELECT idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave,ficha,rol"
+        $query = "SELECT idusuario,idtipodocumento,documento,nombres,apellido1,apellido2,correo,clave,ficha,rol"
                 . " FROM usuarios WHERE correo='" . $correo . "'";
         return $this->conn->query($query);
     }
@@ -68,6 +68,21 @@ class UsuariosMySqlDAO implements UsuariosDAO {
 
     public function setConn($conn) {
         $this->conn = $conn;
+    }
+
+    public function listarEstudiantes() {
+        $query = "SELECT * FROM  usuarios WHERE rol=1 ORDER BY nombres";
+        return $this->conn->query($query);
+    }
+
+    public function listarProfesores() {
+        $query = "SELECT * FROM  usuarios WHERE rol=2 ORDER BY nombres";
+        return $this->conn->query($query);
+    }
+
+    public function listarAdministrativos() {
+        $query = "SELECT * FROM  usuarios WHERE rol=3 ORDER BY nombres";
+        return $this->conn->query($query);
     }
 
 }
