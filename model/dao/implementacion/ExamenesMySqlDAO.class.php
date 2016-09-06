@@ -41,5 +41,4 @@ class ExamenesMySqlDAO implements ExamenesDAO {
     function setConn($conn) {
         $this->conn = $conn;
     }
-
 }

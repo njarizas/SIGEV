@@ -9,8 +9,9 @@
 
 require_once 'DAO.php';
 
-interface ResultadosexamenesDAO extends DAO {
+interface ResultadosExamenesDAO extends DAO {
 
+    public function insertar($resultadoExamen);
 }
 
 ?>

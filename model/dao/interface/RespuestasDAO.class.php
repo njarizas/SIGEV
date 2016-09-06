@@ -10,6 +10,8 @@
 require_once 'DAO.php';
 
 interface RespuestasDAO extends DAO {
+    
+    public function insertar($respuesta);
 
 }
 

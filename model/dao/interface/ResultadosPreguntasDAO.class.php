@@ -9,7 +9,7 @@
 
 require_once 'DAO.php';
 
-interface ResultadospreguntasDAO extends DAO {
+interface ResultadosPreguntasDAO extends DAO {
 
 }
 
