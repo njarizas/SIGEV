@@ -29,7 +29,7 @@ $usuarioDAO = new UsuariosMySqlDAO();
     }
     echo '</table></div></div>';
     ?>
-</html>
+</form>
 <?php
 include ("footer.php");
 ?>
