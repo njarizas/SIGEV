@@ -23,7 +23,7 @@
                     <h2>SISTEMA DE INFORMACIÓN PARA LA GESTIÓN DE EXAMENES VIRTUALES.</h2><hr>
                     <?php
                     session_start();
-                    if ($_SESSION['usuario'] != null) {
+                    if (!empty($_SESSION['usuario'])) {
                         if ($_SESSION['usuario']['rol'] == 1) {
                             ?>
                             <nav class="navbar navbar-default menu">
@@ -33,7 +33,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
-                                    <li><a href="iniciar-sesion.php">Cerrar Sesion</a></li>
+                                    <li><a href="cerrar-sesion.php">Cerrar Sesion</a></li>
                                 </ul>
                             </nav>
                             <?php
@@ -47,7 +47,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
-                                    <li><a href="iniciar-sesion.php">Cerrar Sesion</a></li>
+                                    <li><a href="cerrar-sesion.php">Cerrar Sesion</a></li>
                                 </ul>
                             </nav>
                             <?php
@@ -65,11 +65,11 @@
                                             <li><a href="crear-tipo-documento.php">Crear Tipo Documento</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
                                     <li><a href="registrar-usuario.php">Registrar Usuarios</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="iniciar-sesion.php">Cerrar Sesion</a></li>
+                                    <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
+                                    <li><a href="cerrar-sesion.php">Cerrar Sesion</a></li>
                                 </ul>
                             </nav>
                             <?php
@@ -77,3 +77,4 @@
                     }
                     ?>
                 </header>
+            

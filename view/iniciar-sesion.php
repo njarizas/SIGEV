@@ -49,8 +49,8 @@
                         foreach ($usuExiste2 as $fila) {
                             $u = $fila;
                         }
-                        $_SESSION['usuario'] = $u;
                         if (strcmp($u['clave'], md5(sha1($password))) == 0) {
+                            $_SESSION['usuario'] = $u;
 //                            echo "<script>swal(\"Bienvenido\",\"Hola " . $u['nombres'] . " haz iniciado sesión satisfactoriamente \", \"success\");</script>";
                             echo "<script>window.location='index.php';</script>";
                         } else {

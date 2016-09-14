@@ -1,5 +1,6 @@
 <?php
-include("header.php");
+include ("header.php");
+if (!empty($_SESSION['usuario'])) {
 require_once '../model/dto/Usuario.class.php';
 require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
 require_once '../model/dao/implementacion/TiposDocumentoMySqlDAO.class.php';
@@ -202,5 +203,8 @@ $usuarioDAO = new UsuariosMySqlDAO();
         });
     });
     <?php
-    include ("footer.php");
+    include ("footer.php");}
+else {
+echo 'Acceso denegado, por favor inicie sesión';
+}
     ?>

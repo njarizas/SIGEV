@@ -1,5 +1,6 @@
 <?php
 include ("header.php");
+if (!empty($_SESSION['usuario'])) {
 require_once '../model/dao/implementacion/CursosMySqlDAO.class.php';
 require_once '../model/dao/implementacion/PreguntasMySqlDAO.class.php';
 require_once '../model/dao/implementacion/RespuestasMySqlDAO.class.php';
@@ -207,5 +208,8 @@ echo '</table></div></div>';
     });
 </script>
 <?php
-include ("footer.php");
+include ("footer.php");}
+else {
+echo 'Acceso denegado, por favor inicie sesión';
+}
 ?>

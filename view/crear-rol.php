@@ -1,5 +1,6 @@
 <?php
 include ("header.php");
+if (!empty($_SESSION['usuario'])) {
 require_once '../model/dao/implementacion/RolesMySqlDAO.class.php';
 $rolesDAO = new RolesMySqlDAO();
 if (isset($_POST['registrar-rol'])) {
@@ -69,5 +70,8 @@ echo '</table></div></div>';
     });
 </script>
 <?php
-include ("footer.php");
+include ("footer.php");}
+else {
+echo 'Acceso denegado, por favor inicie sesión';
+}
 ?>

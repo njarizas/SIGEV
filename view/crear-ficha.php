@@ -1,5 +1,6 @@
 <?php
 include ("header.php");
+if (!empty($_SESSION['usuario'])) {
 require_once '../model/dao/implementacion/FichasMySqlDAO.class.php';
 $fichasDAO = new FichasMySqlDAO();
 if (isset($_POST['registrar-ficha'])) {
@@ -8,7 +9,7 @@ if (isset($_POST['registrar-ficha'])) {
         echo "<script>swal(\"Registro exitóso\", \"La ficha: " . $ficha . " fue registrada exitósamente \", \"success\");</script>";
     }
 }
-$ficha = "";
+ $ficha = "";
 ?>
 <div class="page-header">
     <h2>Crear Fichas</h2>
@@ -69,5 +70,8 @@ echo '</table></div></div>';
     });
 </script>
 <?php
-include ("footer.php");
+include ("footer.php");}
+else {
+echo 'Acceso denegado, por favor inicie sesión';
+}
 ?>

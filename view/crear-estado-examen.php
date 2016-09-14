@@ -1,5 +1,6 @@
 <?php
 include ("header.php");
+if (!empty($_SESSION['usuario'])) {
 require_once '../model/dao/implementacion/EstadosExamenesMySqlDAO.class.php';
 $estadosExamenesDAO = new EstadosExamenesMySqlDAO();
 if (isset($_POST['registrar-estado-examen'])) {
@@ -69,5 +70,8 @@ echo '</table></div></div>';
     });
 </script>
 <?php
-include ("footer.php");
+include ("footer.php");}
+else {
+echo 'Acceso denegado, por favor inicie sesión';
+}
 ?>

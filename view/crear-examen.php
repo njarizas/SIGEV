@@ -1,5 +1,6 @@
 <?php
-include("header.php");
+include ("header.php");
+if (!empty($_SESSION['usuario'])) {
 require_once '../model/dto/Usuario.class.php';
 require_once '../model/dto/Examen.class.php';
 require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
@@ -102,6 +103,18 @@ if (isset($_POST['registrar-examen'])) {
             </select>
         </div>
     </div> 
+    <div class="form-group">
+        <label class="col-sm-3 col-sm-offset-2 control-label" for="estado">Tipo de Examen:</label>
+        <div class="col-sm-5">
+            <select id="estado" name="estado" class="form-control">
+                <option value="" disabled selected>Seleccione el tipo de examen</option>
+                <option value="1">Manual</option>
+                <option value="2">Automático</option>
+            </select>
+        </div>
+    </div> 
+    <hr>
+    
     <button type="submit" class="btn btn-primary col-xs-3 col-xs-offset-7" name="registrar-examen"
             value="registrar-examen">Registrar
     </button>
@@ -240,5 +253,9 @@ if (isset($_POST['registrar-examen'])) {
 </script>
 <?php
 include ("footer.php");
+}
+else{
+    echo 'Acceso denegado, por favor inicie sesión';
+}
 ?>
         
