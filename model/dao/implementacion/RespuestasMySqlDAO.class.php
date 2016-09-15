@@ -17,6 +17,11 @@ class RespuestasMySqlDAO implements RespuestasDAO {
         $this->conn = Database::connect();
     }
 
+    public function listarTodos() {
+        $query = "SELECT * FROM respuestas ORDER BY idrespuesta";
+        return $this->conn->query($query);
+    }
+
     public function insertar($respuesta) {
         $query = 'INSERT INTO respuestas (idpregunta, respuesta) VALUES (?,?)';
         $stmt = $this->conn->prepare($query);
@@ -47,10 +52,4 @@ class RespuestasMySqlDAO implements RespuestasDAO {
         $this->conn = $conn;
     }
 
-    public function listarTodos() {
-        
-    }
-
 }
-
-?>

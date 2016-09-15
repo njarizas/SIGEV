@@ -16,8 +16,8 @@ class TiposDocumentoMySqlDAO implements TiposDocumentoDAO {
     function __construct() {
         $this->conn = Database::connect();
     }
-    
-      public function listarTodos() {
+
+    public function listarTodos() {
         $query = "SELECT * FROM  tiposdocumentos ORDER BY nombredocumento";
         return $this->conn->query($query);
     }

@@ -1,22 +1,22 @@
 <?php
+
 /**
  * Description of FichasMySqlDAO
  *
  * @author Nelson
  */
-
 require_once '../class/config/Database.class.php';
 require_once '../model/dao/interface/FichasDAO.class.php';
 
-class FichasMySqlDAO implements FichasDAO{
-  
+class FichasMySqlDAO implements FichasDAO {
+
     private $conn;
 
     function __construct() {
         $this->conn = Database::connect();
     }
-    
-      public function listarTodos() {
+
+    public function listarTodos() {
         $query = "SELECT * FROM  fichas ORDER BY ficha";
         return $this->conn->query($query);
     }
