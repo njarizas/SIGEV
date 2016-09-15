@@ -19,7 +19,7 @@ class Usuario {
     private $ficha;
     private $rol;
 
-    function __construct($idTipoDocumento, $documento, $nombres, $apellido1, $apellido2, $correo, $clave,$ficha,$rol) {
+    function __construct($idTipoDocumento, $documento, $nombres, $apellido1, $apellido2, $correo, $clave, $ficha, $rol) {
         $this->idTipoDocumento = $idTipoDocumento;
         $this->documento = $documento;
         $this->nombres = $nombres;

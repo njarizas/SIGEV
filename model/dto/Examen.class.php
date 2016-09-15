@@ -16,7 +16,7 @@ class Examen {
     private $idEstadoExamen;
     private $ficha;
 
-    function __construct($idCurso, $idProfesor, $fechaInicio, $fechaFin, $idEstadoExamen,$ficha) {
+    function __construct($idCurso, $idProfesor, $fechaInicio, $fechaFin, $idEstadoExamen, $ficha) {
         $this->idCurso = $idCurso;
         $this->idProfesor = $idProfesor;
         $this->fechaInicio = $fechaInicio;
@@ -72,7 +72,7 @@ class Examen {
     function setIdEstadoExamen($idEstadoExamen) {
         $this->idEstadoExamen = $idEstadoExamen;
     }
-    
+
     function getFicha() {
         return $this->ficha;
     }
