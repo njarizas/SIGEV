@@ -122,7 +122,7 @@ $respuestaErronea[3] = "";
 <br>
 <hr>
 <?php
-$preguntaslis = $preguntasDAO->listarPreguntas();
+$preguntaslis = $preguntasDAO->listarTodos();
 if (count($preguntaslis) > 0) {
     echo '<div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"><table border="1" class="table table-hover"><tr><td>Id Pregunta</td><td>Enunciado</td></tr>';
 }

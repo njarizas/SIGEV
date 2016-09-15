@@ -11,4 +11,6 @@ require_once 'DAO.php';
 interface ExamenesDAO extends DAO {
 
     public function insertar($examen);
+
+    public function obtenerUltimoRegistroInsertado();
 }

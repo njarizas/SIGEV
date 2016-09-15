@@ -22,6 +22,11 @@ class ExamenesMySqlDAO implements ExamenesDAO {
         return $this->conn->query($query);
     }
 
+    public function obtenerUltimoRegistroInsertado() {
+        $query = "SELECT * FROM examenes ORDER BY idexamen DESC LIMIT 1";
+        return $this->conn->query($query);
+    }
+
     public function insertar($examen) {
         $query = "INSERT INTO examenes (idcurso,idprofesor,fechainicio,fechafin,idestadoexamen,ficha) VALUES(?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
@@ -41,4 +46,5 @@ class ExamenesMySqlDAO implements ExamenesDAO {
     function setConn($conn) {
         $this->conn = $conn;
     }
+
 }

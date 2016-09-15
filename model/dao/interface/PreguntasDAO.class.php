@@ -11,4 +11,6 @@ require_once 'DAO.php';
 interface PreguntasDAO extends DAO {
 
     public function insertar($preguntaDTO);
+    
+    public function buscarPreguntasPorCurso($idCurso);
 }

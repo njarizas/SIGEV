@@ -1,7 +1,6 @@
 <?php
 include ("header.php");
 if (!empty($_SESSION['usuario'])) {
-    echo '<h1>'.$_SESSION['usuario']['rol'].'</h1>';
 if ($_SESSION['usuario']['rol'] == 1) {
     echo 'Bienvenido, estudiante: ' . $_SESSION['usuario']['nombres'];
 } else if ($_SESSION['usuario']['rol'] == 2) {

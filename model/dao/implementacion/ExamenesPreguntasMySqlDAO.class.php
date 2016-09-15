@@ -18,7 +18,11 @@ class ExamenesPreguntasMySqlDAO implements ExamenesPreguntasDAO {
     }
 
     public function insertar($examenPreguntaDTO) {
-        
+        $query = 'INSERT INTO examenespreguntas (idexamen, idpregunta) VALUES (?, ?)';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindparam(1, $examenPreguntaDTO->getIdExamen());
+        $stmt->bindparam(2, $examenPreguntaDTO->getIdPregunta());
+        return $stmt->execute();
     }
 
     public function listarTodos() {

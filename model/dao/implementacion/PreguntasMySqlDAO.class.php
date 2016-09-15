@@ -9,7 +9,7 @@
 require_once '../class/config/Database.class.php';
 require_once '../model/dao/interface/PreguntasDAO.class.php';
 
-class PreguntasMySqlDAO implements DAO {
+class PreguntasMySqlDAO implements PreguntasDAO {
 
     private $conn;
 
@@ -17,16 +17,11 @@ class PreguntasMySqlDAO implements DAO {
         $this->conn = Database::connect();
     }
 
-    public function listarPreguntas() {
-        $query = "SELECT * FROM  preguntas ORDER BY idpregunta";
-        return $this->conn->query($query);
-    }
-
     public function listarTodos() {
         $query = "SELECT * FROM  preguntas ORDER BY idpregunta";
         return $this->conn->query($query);
     }
-    
+
     public function insertar($pregunta) {
         $query = 'INSERT INTO preguntas (enunciado, valorpregunta, idcurso) VALUES (?, ?, ?)';
         $stmt = $this->conn->prepare($query);
@@ -48,6 +43,11 @@ class PreguntasMySqlDAO implements DAO {
 
     public function obtenerUltimoRegistroInsertado() {
         $query = "SELECT * FROM preguntas ORDER BY idpregunta DESC LIMIT 1";
+        return $this->conn->query($query);
+    }
+
+    public function buscarPreguntasPorCurso($idCurso) {
+        $query = "SELECT * FROM  preguntas WHERE idcurso=" . $idCurso . " ORDER BY idpregunta";
         return $this->conn->query($query);
     }
 
