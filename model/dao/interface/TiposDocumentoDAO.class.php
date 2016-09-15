@@ -8,6 +8,7 @@
  */
 require_once 'DAO.php';
 
-interface TiposDocumentoDAO extends DAO{
-      function insertar($nombreDocumento);
+interface TiposDocumentoDAO extends DAO {
+
+    function insertar($nombreDocumento);
 }

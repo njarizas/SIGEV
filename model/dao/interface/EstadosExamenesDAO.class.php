@@ -8,6 +8,7 @@
  */
 require_once 'DAO.php';
 
-interface EstadosexamenesDAO extends DAO {
+interface EstadosExamenesDAO extends DAO {
 
+    public function insertar($estadoExamenDTO);
 }
