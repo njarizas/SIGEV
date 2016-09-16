@@ -51,6 +51,15 @@ class PreguntasMySqlDAO implements PreguntasDAO {
         return $this->conn->query($query);
     }
 
+    public function contarPreguntasPorCurso($idCurso) {
+        $query = "SELECT * FROM  preguntas WHERE idcurso=? ORDER BY idpregunta";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindparam(1, $idCurso);
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+        return count($rows);
+    }
+
     function getConn() {
         return $this->conn;
     }

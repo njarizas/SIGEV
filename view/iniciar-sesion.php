@@ -71,22 +71,22 @@
                 </noscript>
                 <form id="form_iniciar_sesion" method="post" class="form-horizontal" action="iniciar-sesion.php">
                     <div class="form-group">
-                        <label class="col-sm-3 col-sm-offset-1 control-label" for="usuario">Usuario:</label>
-                        <div class="col-sm-6">
+                        <label class="col-xs-3 col-sm-3 col-sm-offset-1 control-label" for="usuario">Usuario:</label>
+                        <div class="col-xs-9 col-sm-7 col-md-5 validacion">
                             <input type="text" class="form-control" id="usuario" name="usuario" maxlength="100"
                                    placeholder="Número de documento o Correo electrónico" value="<?= $user; ?>" required>
                         </div>
                     </div>
                     <div class=" form-group">
-                        <label class="col-sm-3 col-sm-offset-1 control-label" for="contrasena">Contraseña:</label>
-                        <div class="col-sm-6">
+                        <label class="col-xs-3 col-sm-3 col-sm-offset-1 control-label" for="contrasena">Contraseña:</label>
+                        <div class="col-xs-9 col-sm-7 col-md-5 validacion">
                             <input type="password" class="form-control" id="contrasena"
                                    name="contrasena" placeholder="" required
                                    value="<?= $password; ?>">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary  col-xs-3 col-xs-offset-7" name="iniciar-sesion"
-                            value="iniciar-sesion">Iniciar Sesión
+                    <button type="submit" class="btn btn-primary  col-xs-4 col-xs-offset-4" name="iniciar-sesion"
+                            value="iniciar-sesion">Iniciar Sesion
                     </button>
                 </form>                  
                 <script type = "text/javascript">
@@ -100,7 +100,7 @@
                             },
                             fields: {
                                 usuario: {
-                                    row: '.col-sm-6',
+                                    row: '.validacion',
                                     validators: {
                                         notEmpty: {
                                             message: 'El usuario es obligatorio'
@@ -116,7 +116,7 @@
                                     }
                                 },
                                 contrasena: {
-                                    row: '.col-sm-6',
+                                    row: '.validacion',
                                     validators: {
                                         notEmpty: {
                                             message: 'La contraseña es obligatoria'

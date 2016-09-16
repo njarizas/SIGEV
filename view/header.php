@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container" style="background-color:#EEE;">
-            <div class="col-sm-8 col-sm-offset-2" style="background-color:#FFF;">
+            <div class="col-md-10 col-md-offset-1" style="background-color:#FFF;">
                 <header> 
                     <img class="img-responsive pull-left" src="img/SIGEV.png" height="100" width="100">
                     <h2>SISTEMA DE INFORMACIÓN PARA LA GESTIÓN DE EXAMENES VIRTUALES.</h2><hr>
@@ -33,7 +33,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
-                                    <li><a href="cerrar-sesion.php">Cerrar Sesion</a></li>
+                                    <li><a href="cerrar-sesion.php"><span class="glyphicon glyphicon-off" style="margin-right:15px;"></span></a></li>
                                 </ul>
                             </nav>
                             <?php
@@ -47,7 +47,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
-                                    <li><a href="cerrar-sesion.php">Cerrar Sesion</a></li>
+                                    <li><a href="cerrar-sesion.php"><span class="glyphicon glyphicon-off" style="margin-right:15px;"></span></a></li>
                                 </ul>
                             </nav>
                             <?php
@@ -69,7 +69,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="#"><?php echo $_SESSION['usuario']['nombres']; ?></a></li>
-                                    <li><a href="cerrar-sesion.php">Cerrar Sesion</a></li>
+                                    <li><a href="cerrar-sesion.php"><span class="glyphicon glyphicon-off" style="margin-right:15px;"></span></a></li>
                                 </ul>
                             </nav>
                             <?php

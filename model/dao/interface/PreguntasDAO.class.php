@@ -13,4 +13,6 @@ interface PreguntasDAO extends DAO {
     public function insertar($preguntaDTO);
     
     public function buscarPreguntasPorCurso($idCurso);
+    
+    public function contarPreguntasPorCurso($idCurso);
 }
