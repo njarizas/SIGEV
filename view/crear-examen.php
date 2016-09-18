@@ -1,6 +1,8 @@
 <?php
 include ("header.php");
 if (!empty($_SESSION['usuario'])) {
+    require_once '../controller/ExamenFacade.php';
+
     require_once '../model/dto/Usuario.class.php';
     require_once '../model/dto/Examen.class.php';
     require_once '../model/dto/ExamenPregunta.class.php';
@@ -10,6 +12,8 @@ if (!empty($_SESSION['usuario'])) {
     require_once '../model/dao/implementacion/ExamenesMySqlDAO.class.php';
     require_once '../model/dao/implementacion/PreguntasMySqlDAO.class.php';
     require_once '../model/dao/implementacion/ExamenesPreguntasMySqlDAO.class.php';
+
+    $examenFacade = new ExamenFacade();
 
     $profesor = $_SESSION['usuario']['idusuario'];
     $fichasDAO = new FichasMySqlDAO();
@@ -46,36 +50,27 @@ if (!empty($_SESSION['usuario'])) {
     }
 
     if (strcmp($boton, "registrar-examen") == 0 && strcmp($tipoExamen, "manual") == 0) {
-       $hoy = date("Y-m-d");
-        $tmp = explode('-',$hoy);
-        $fechaHoy = mktime(0, 0, 0, $tmp[0], $tmp[1]+1, $tmp[2]);
+        $hoy = date("Y-m-d");
+        $tmp = explode('-', $hoy);
+        $fechaHoy = mktime(0, 0, 0, $tmp[0], $tmp[1] + 1, $tmp[2]);
         $strIni = explode('-', $fechaInicial);
         $fechaIni = mktime(0, 0, 0, $strIni[1], $strIni[2], $strIni[0]);
         $strFin = explode('-', $fechaFinal);
         $fechaFin = mktime(0, 0, 0, $strFin[1], $strFin[2], $strFin[0]);
-        if (date("U".$fechaHoy) > date("U",$fechaIni)) {
+        if (date("U" . $fechaHoy) > date("U", $fechaIni)) {
             echo "<script>swal(\"Atención\", \"La fecha inicial del examen debe ser superior a la fecha actual \", \"warning\");</script>";
-        }
-        else if (date("U",$fechaIni) > date("U",$fechaFin)) {
+        } else if (date("U", $fechaIni) > date("U", $fechaFin)) {
             echo "<script>swal(\"Atención\", \"La fecha limite del examen debe ser superior a la fecha inicial \", \"warning\");</script>";
         } else {
             $preguntasSeleccionadas = (empty($_POST["preguntasSeleccionadas"]) ? "" : $_POST["preguntasSeleccionadas"]);
             if (is_array($preguntasSeleccionadas) && count($preguntasSeleccionadas) > 0) {
-                if ($examenesDAO->insertar(new Examen($curso, $profesor, $fechaInicial, $fechaFinal, $estado, $ficha)) > 0) {
-                    $idExamenes = $examenesDAO->obtenerUltimoRegistroInsertado();
-                    foreach ($idExamenes as $id) {
-                        $idExamen = $id['idexamen'];
-                    }
-                    foreach ($preguntasSeleccionadas as $idPregunta) {
-                        $examenesPreguntasDAO->insertar(new ExamenPregunta($idExamen, $idPregunta));
-                    }
-                    echo "<script>swal(\"Registro exitóso\", \"El examen asignado a la ficha " . $ficha . " que consta de " . count($preguntasSeleccionadas) . " preguntas fue registrado exitósamente \", \"success\");</script>";
-                    $curso = "";
-                    $fechaInicial = "";
-                    $fechaFinal = "";
-                    $ficha = "";
-                    $estado = "";
-                }
+                $examen = new Examen($curso, $profesor, $fechaInicial, $fechaFinal, $estado, $ficha);
+                $examenFacade->crearExamenManual($examen, $preguntasSeleccionadas);
+                $curso = "";
+                $fechaInicial = "";
+                $fechaFinal = "";
+                $ficha = "";
+                $estado = "";
             } else {
                 echo "<script>swal(\"No ha seleccionado ninguna pregunta\", \"Por favor seleccione al menos una pregunta e intente nuevamente \", \"warning\");</script>";
             }
@@ -84,22 +79,21 @@ if (!empty($_SESSION['usuario'])) {
 
     if (strcmp($boton, "registrar-examen") == 0 && strcmp($tipoExamen, "automatico") == 0) {
         $hoy = date("Y-m-d");
-        $tmp = explode('-',$hoy);
-        $fechaHoy = mktime(0, 0, 0, $tmp[0], $tmp[1]+1, $tmp[2]);
+        $tmp = explode('-', $hoy);
+        $fechaHoy = mktime(0, 0, 0, $tmp[0], $tmp[1] + 1, $tmp[2]);
         $strIni = explode('-', $fechaInicial);
         $fechaIni = mktime(0, 0, 0, $strIni[1], $strIni[2], $strIni[0]);
         $strFin = explode('-', $fechaFinal);
         $fechaFin = mktime(0, 0, 0, $strFin[1], $strFin[2], $strFin[0]);
-        if (date("U".$fechaHoy) > date("U",$fechaIni)) {
+        if (date("U" . $fechaHoy) > date("U", $fechaIni)) {
             echo "<script>swal(\"Atención\", \"La fecha inicial del examen debe ser superior a la fecha actual \", \"warning\");</script>";
-        }
-        else if (date("U",$fechaIni) > date("U",$fechaFin)) {
+        } else if (date("U", $fechaIni) > date("U", $fechaFin)) {
             echo "<script>swal(\"Atención\", \"La fecha limite del examen debe ser superior a la fecha inicial \", \"warning\");</script>";
         } else {
             $cantidadPreguntas = (empty($_POST["cantidadPreguntas"]) ? "" : $_POST["cantidadPreguntas"]);
             if ($cantidadPreguntas > 0 && $cantidadPreguntas <= $preguntasDAO->contarPreguntasPorCurso($curso)) {
-
-                echo "<script>swal(\"Atención\", \"Acá debe generar un examen aleatorio de " . $cantidadPreguntas . " preguntas \", \"info\");</script>";
+                $examen = new Examen($curso, $profesor, $fechaInicial, $fechaFinal, $estado, $ficha);
+                $examenFacade->crearExamenAutomatico($examen, $cantidadPreguntas);
                 $curso = "";
                 $fechaInicial = "";
                 $fechaFinal = "";

@@ -24,7 +24,11 @@ class ExamenesMySqlDAO implements ExamenesDAO {
 
     public function obtenerUltimoRegistroInsertado() {
         $query = "SELECT * FROM examenes ORDER BY idexamen DESC LIMIT 1";
-        return $this->conn->query($query);
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch();
+//        echo 'El id del ultimo registro insertado es '.$row['idexamen'];
+        return $row;
     }
 
     public function insertar($examen) {
