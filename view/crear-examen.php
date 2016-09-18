@@ -46,24 +46,17 @@ if (!empty($_SESSION['usuario'])) {
     }
 
     if (strcmp($boton, "registrar-examen") == 0 && strcmp($tipoExamen, "manual") == 0) {
-
        $hoy = date("Y-m-d");
         $tmp = explode('-',$hoy);
         $fechaHoy = mktime(0, 0, 0, $tmp[0], $tmp[1]+1, $tmp[2]);
         $strIni = explode('-', $fechaInicial);
-        $fechaIni = mktime(0, 0, 0, $strIni[0], $strIni[1], $strIni[2]);
+        $fechaIni = mktime(0, 0, 0, $strIni[1], $strIni[2], $strIni[0]);
         $strFin = explode('-', $fechaFinal);
-        $fechaFin = mktime(0, 0, 0, (int)$strFin[0], (int)$strFin[1], (int)$strFin[2]);
-        echo 'hoy: '.$hoy.', inicial: '.$fechaInicial.', final: '.$fechaFinal;
-        echo '<br>'. $tmp[0].'*'.$tmp[1].'*'. $tmp[2];
-        echo '<br>'. $strIni[0].'*'.$strIni[1].'*'. $strIni[2];
-        echo '<br>'. $strFin[0].'*'.$strFin[1].'*'. $strFin[2];
-        echo date("Y-m-d",$fechaIni);
-         echo '<br>'.date("Y-m-d".$fechaHoy).'***'.date("Y-m-d",$fechaIni).'***'.date("Y-m-d",$fechaFin);
-        if ($fechaHoy > $fechaIni) {
+        $fechaFin = mktime(0, 0, 0, $strFin[1], $strFin[2], $strFin[0]);
+        if (date("U".$fechaHoy) > date("U",$fechaIni)) {
             echo "<script>swal(\"Atención\", \"La fecha inicial del examen debe ser superior a la fecha actual \", \"warning\");</script>";
         }
-        else if ($fechaIni > $fechaFin) {
+        else if (date("U",$fechaIni) > date("U",$fechaFin)) {
             echo "<script>swal(\"Atención\", \"La fecha limite del examen debe ser superior a la fecha inicial \", \"warning\");</script>";
         } else {
             $preguntasSeleccionadas = (empty($_POST["preguntasSeleccionadas"]) ? "" : $_POST["preguntasSeleccionadas"]);
@@ -94,17 +87,13 @@ if (!empty($_SESSION['usuario'])) {
         $tmp = explode('-',$hoy);
         $fechaHoy = mktime(0, 0, 0, $tmp[0], $tmp[1]+1, $tmp[2]);
         $strIni = explode('-', $fechaInicial);
-        $fechaIni = mktime(0, 0, 0, $strIni[0], $strIni[1], $strIni[2]);
+        $fechaIni = mktime(0, 0, 0, $strIni[1], $strIni[2], $strIni[0]);
         $strFin = explode('-', $fechaFinal);
-        $fechaFin = mktime(0, 0, 0, $strFin[0], $strFin[1], $strFin[2]);
-        echo 'hoy: '.$hoy.', inicial: '.$fechaInicial.', final: '.$fechaFinal;
-        echo '<br>'. $strIni[0].'*'.$strIni[1].'*'. $strIni[2];
-        echo '<br>'. $strFin[0].'*'.$strFin[1].'*'. $strFin[2];
-        echo '<br>'.date("Y-m-d".$fechaHoy).'***'.date("Y-m-d",$fechaIni).'***'.date("Y-m-d",$fechaFin);
-        if ($fechaHoy > $fechaIni) {
+        $fechaFin = mktime(0, 0, 0, $strFin[1], $strFin[2], $strFin[0]);
+        if (date("U".$fechaHoy) > date("U",$fechaIni)) {
             echo "<script>swal(\"Atención\", \"La fecha inicial del examen debe ser superior a la fecha actual \", \"warning\");</script>";
         }
-        else if ($fechaIni > $fechaFin) {
+        else if (date("U",$fechaIni) > date("U",$fechaFin)) {
             echo "<script>swal(\"Atención\", \"La fecha limite del examen debe ser superior a la fecha inicial \", \"warning\");</script>";
         } else {
             $cantidadPreguntas = (empty($_POST["cantidadPreguntas"]) ? "" : $_POST["cantidadPreguntas"]);
