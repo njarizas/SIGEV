@@ -1,7 +1,15 @@
 <?php
 require('../controlador/reportes/fpdf.php');
+
+
+	
+
+
 $pdf = new FPDF();
+$pdf->Image('../view/img/SIGEV.PNG',10,8,33,'PNG');
 $pdf->AddPage();
+
+
 $pdf->SetFont('Arial', 'B', 16);
 require_once '../model/dto/Usuario.class.php';
 require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
