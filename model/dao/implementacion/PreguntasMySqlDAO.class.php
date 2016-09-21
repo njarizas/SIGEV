@@ -18,7 +18,11 @@ class PreguntasMySqlDAO implements PreguntasDAO {
     }
 
     public function listarTodos() {
-        $query = "SELECT * FROM  preguntas ORDER BY idpregunta";
+        $query = "SELECT * 
+            FROM  preguntas p
+            INNER JOIN cursos c 
+            ON p.idcurso=c.idcurso 
+            ORDER BY c.nombrecurso";
         return $this->conn->query($query);
     }
 
@@ -58,6 +62,16 @@ class PreguntasMySqlDAO implements PreguntasDAO {
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return count($rows);
+    }
+    
+     public function verPregunta($idPregunta) {
+        $query = "SELECT *,floor(random()*(100)) r
+ FROM  preguntas p
+ INNER JOIN respuestas r
+ ON p.idpregunta=r.idpregunta
+ WHERE p.idpregunta=".$idPregunta."
+ ORDER BY r";
+        return $this->conn->query($query);
     }
 
     function getConn() {

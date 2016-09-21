@@ -19,8 +19,8 @@
         <div class="container" style="background-color:#EEE;">
             <div class="col-md-10 col-md-offset-1" style="background-color:#FFF;">
                 <header> 
-                    <img class="img-responsive pull-left" src="img/SIGEV.png" height="100" width="100">
-                    <h2>SISTEMA DE INFORMACIÓN PARA LA GESTIÓN DE EXAMENES VIRTUALES.</h2><hr>
+                    <img class="img-responsive pull-left" src="img/SIGEV.png" height="60" width="60">
+                    <h3>SISTEMA DE INFORMACIÓN PARA LA GESTIÓN DE EXAMENES VIRTUALES.</h3>
                     <?php
                     session_start();
                     if (!empty($_SESSION['usuario'])) {
@@ -41,8 +41,20 @@
                             ?>
                             <nav class="navbar navbar-default menu">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="crear-preguntas.php">Crear Preguntas</a></li>
-                                    <li><a href="crear-examen.php">Crear Examen</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Preguntas <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                             <li><a href="crear-preguntas.php">Crear Preguntas</a></li>
+                                             <li><a href="ver-preguntas.php">Ver Preguntas</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examenes <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                             <li><a href="crear-examen.php">Crear Examen</a></li>
+                                             <li><a href="ver-examenes.php">Ver Examenes</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="#">Ver Resultados de Examenes</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">

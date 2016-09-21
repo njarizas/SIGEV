@@ -51,10 +51,7 @@ $respuestaErronea[1] = "";
 $respuestaErronea[2] = "";
 $respuestaErronea[3] = "";
 ?>
-<div class="page-header">
-    <h2>Crear Preguntas</h2>
-</div>
-
+    <h4>Crear Preguntas</h4><hr>
 <noscript>
 <p class="text-danger">
     Debe habilitar el JavaScript en su navegador!!!
@@ -120,18 +117,6 @@ $respuestaErronea[3] = "";
     <button type="submit" class="btn btn-primary col-xs-3 col-xs-offset-7" id="registrar-pregunta" name="registrar-pregunta" value="registrar">Crear Pregunta</button>
 </form>
 <br>
-<hr>
-<?php
-$preguntaslis = $preguntasDAO->listarTodos();
-if (count($preguntaslis) > 0) {
-    echo '<div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"><table border="1" class="table table-hover"><tr><td>Id Pregunta</td><td>Enunciado</td></tr>';
-}
-foreach ($preguntaslis as $fila) {
-    echo '<tr><td>' . $fila['idpregunta'] . '</td>';
-    echo '<td>' . $fila['enunciado'] . '</td></tr>';
-}
-echo '</table></div></div>';
-?>
 <script type="text/javascript">
     $().ready(function () {
         $('#form_registrar_pregunta').formValidation({
