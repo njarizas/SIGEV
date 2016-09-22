@@ -33,6 +33,22 @@ class ExamenesMySqlDAO implements ExamenesDAO {
         return $this->conn->query($query);
     }
     
+    public function listarExamenesPorEstudiante($idEstudiante){
+        $query = "select * 
+        from examenes e
+        inner join cursos c
+        on e.idcurso = c.idcurso
+        inner join estadosexamenes ee
+        on e.idestadoexamen = ee.idestadoexamen
+        inner join usuarios u
+        on e.ficha = u.ficha
+        where rol = 1
+        and idusuario = ".$idEstudiante."
+        and ee.idestadoexamen = 1
+        order by fechainicio,fechafin";
+        return $this->conn->query($query);
+    }
+    
     public function verExamen($idExamen){
         $query = "SELECT * FROM examenes e
         INNER JOIN cursos c

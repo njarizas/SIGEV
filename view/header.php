@@ -28,7 +28,7 @@
                             ?>
                             <nav class="navbar navbar-default menu">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">Contestar Examen</a></li>
+                                    <li><a href="resolver-examenes.php">Resolver Examenes</a></li>
                                     <li><a href="#">Ver Resultados de Examenes</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
