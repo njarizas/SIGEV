@@ -8,23 +8,23 @@
  */
 class ResultadoPregunta {
 
-    private $idResultadosPreguntas;
-    private $idResultadosExamenes;
+    private $idResultadoPregunta;
+    private $idResultadoExamen;
     private $idRespuesta;
     private $idPregunta;
 
-    function __construct($idResultadosExamenes, $idRespuesta, $idPregunta) {
-        $this->idResultadosExamenes = $idResultadosExamenes;
-        $this->idRespuesta = $idRespuesta;
+    function __construct($idResultadoExamen, $idPregunta, $idRespuesta) {
+        $this->idResultadoExamen = $idResultadoExamen;
         $this->idPregunta = $idPregunta;
+        $this->idRespuesta = $idRespuesta;
     }
 
-    function getIdResultadosPreguntas() {
-        return $this->idResultadosPreguntas;
+    function getIdResultadoPregunta() {
+        return $this->idResultadoPregunta;
     }
 
-    function getIdResultadosExamenes() {
-        return $this->idResultadosExamenes;
+    function getIdResultadoExamen() {
+        return $this->idResultadoExamen;
     }
 
     function getIdRespuesta() {
@@ -35,12 +35,12 @@ class ResultadoPregunta {
         return $this->idPregunta;
     }
 
-    function setIdResultadosPreguntas($idResultadosPreguntas) {
-        $this->idResultadosPreguntas = $idResultadosPreguntas;
+    function setIdResultadoPregunta($idResultadoPregunta) {
+        $this->idResultadoPregunta = $idResultadoPregunta;
     }
 
-    function setIdResultadosExamenes($idResultadosExamenes) {
-        $this->idResultadosExamenes = $idResultadosExamenes;
+    function setIdResultadoExamen($idResultadoExamen) {
+        $this->idResultadoExamen = $idResultadoExamen;
     }
 
     function setIdRespuesta($idRespuesta) {

@@ -18,7 +18,12 @@ class ResultadosPreguntasMySqlDAO implements ResultadosPreguntasDAO {
     }
 
     public function insertar($resultadoPreguntaDTO) {
-        
+         $query = "INSERT INTO resultadospreguntas (idresultadoexamen,idpregunta,idrespuesta) VALUES(?,?,?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindparam(1, $resultadoPreguntaDTO->getIdResultadoExamen());
+        $stmt->bindparam(2, $resultadoPreguntaDTO->getIdPregunta());
+        $stmt->bindparam(3, $resultadoPreguntaDTO->getIdRespuesta());
+        return $stmt->execute();
     }
 
     public function listarTodos() {

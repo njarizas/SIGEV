@@ -8,7 +8,7 @@
  */
 class ResultadoExamen {
 
-    private $idResultadosExamenes;
+    private $idResultadoExamen;
     private $idEstudiante;
     private $idExamen;
     private $nota;
@@ -19,8 +19,8 @@ class ResultadoExamen {
         $this->nota = $nota;
     }
 
-    function getIdResultadosExamenes() {
-        return $this->idResultadosExamenes;
+    function getIdResultadoExamen() {
+        return $this->idResultadoExamen;
     }
 
     function getIdEstudiante() {
@@ -35,8 +35,8 @@ class ResultadoExamen {
         return $this->nota;
     }
 
-    function setIdResultadosExamenes($idResultadosExamenes) {
-        $this->idResultadosExamenes = $idResultadosExamenes;
+    function setIdResultadoExamen($idResultadoExamen) {
+        $this->idResultadosExamenes = $idResultadoExamen;
     }
 
     function setIdEstudiante($idEstudiante) {

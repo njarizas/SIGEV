@@ -12,15 +12,15 @@ require_once '../model/dao/implementacion/ExamenesPreguntasMySqlDAO.class.php';
 
 class ExamenFacade {
 
+    private $preguntasDAO;
+    private $examenesDAO;
+    private $examenesPreguntasDAO;
+
     function __construct() {
         $this->preguntasDAO = new PreguntasMySqlDAO();
         $this->examenesDAO = new ExamenesMySqlDAO();
         $this->examenesPreguntasDAO = new ExamenesPreguntasMySqlDAO();
     }
-
-    private $preguntasDAO;
-    private $examenesDAO;
-    private $examenesPreguntasDAO;
 
     /**
      * Este metodo retorna un array con $cantidadPreguntas preguntas 
@@ -127,7 +127,6 @@ class ExamenFacade {
             foreach ($preguntasSeleccionadas as $idPregunta) {
                 $this->examenesPreguntasDAO->insertar(new ExamenPregunta($idExamen, $idPregunta));
             }
-            echo 'Creo examen manual con ' . count($preguntasSeleccionadas) . ' preguntas';
             echo "<script>swal(\"Registro exitóso\", \"El examen asignado a la"
             . " ficha " . $examen->getFicha() . " que consta de "
             . count($preguntasSeleccionadas) . " preguntas fue registrado"
