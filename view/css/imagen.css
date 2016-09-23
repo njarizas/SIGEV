@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/09/2016, 09:07:44 PM
+    Author     : Ferchito
+*/
+
+body {
+/* Ubicación de la imagen */
+    /*background-image: url(../img/opc1.jpg);*/
+    background-image: url(../img/opc2.png);
+/* Nos aseguramos que la imagen de fondo este centrada vertical horizontalmente en todo momento */
+    background-position: center center;
+/* La imagen de fondo no se repite */
+    background-repeat: no-repeat;
+/* La imagen de fondo está fija en el viewport, de modo que no se mueva cuando la altura del contenido supere la altura de la imagen. */
+    background-attachment: fixed;
+/* La imagen de fondo se reescala cuando se cambia el ancho de ventana del navegador */
+    background-size: cover;
+/* Fijamos un color de fondo para que se muestre mientras se esta cargando la imagen de fondo o si hay problemas para cargarla  */
+    background-color: #464646;
+
+}
