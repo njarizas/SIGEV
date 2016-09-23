@@ -6,6 +6,9 @@
  * @author Nelson
  */
 require_once '../model/dto/Pregunta.class.php';
+require_once '../model/dto/Examen.class.php';
+require_once '../model/dao/implementacion/ExamenesMySqlDAO.class.php';
+require_once '../model/dao/implementacion/ExamenesPreguntasMySqlDAO.class.php';
 
 class ExamenFacade {
 

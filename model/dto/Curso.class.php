@@ -10,6 +10,7 @@ class Curso {
 
     private $idCurso;
     private $nombreCurso;
+    private $codigoCurso;
 
     function __construct($nombreCurso) {
         $this->nombreCurso = $nombreCurso;
@@ -29,6 +30,14 @@ class Curso {
 
     function setNombreCurso($nombreCurso) {
         $this->nombreCurso = $nombreCurso;
+    }
+    
+    function getCodigoCurso() {
+        return $this->codigoCurso;
+    }
+
+    function setCodigoCurso($codigoCurso) {
+        $this->codigoCurso = $codigoCurso;
     }
 
 }
