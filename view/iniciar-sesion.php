@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>SIGEV</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/imagen.css">
@@ -65,11 +66,11 @@
         </p>
         </noscript>
         <form id="form_iniciar_sesion" method="post" class="form-horizontal" action="iniciar-sesion.php">
-            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-3 col-md-offset-4
-                 col-md-offset-1">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-1">
+                <br><br><div class="hidden-xs"><br><br><br><br><br><br></div>
+                <div style="background-color: rgba(255,255,266,0.8); padding: 30px; padding-bottom: 10px; border-radius: 10px;margin: 30px;">
                 <div class="form-group">
-                    <label class=" control-label" for="usuario" style="color: #FFFFFF">Usuario:</label>
+                    <label class=" control-label" for="usuario">Usuario:</label>
                     <div class="validacion">
                         <input type="text" class="form-control" id="usuario" name="usuario" maxlength="100"
                                placeholder="Documento o Correo electrónico" value="<?= $user; ?>" required>
@@ -77,7 +78,7 @@
                 </div>
 
                 <div class=" form-group">
-                    <label class=" control-label" for="contrasena"style="color: #FFFFFF" >Contraseña:</label>
+                    <label class=" control-label" for="contrasena">Contraseña:</label>
                     <div class=" validacion">
                         <input type="password" class="form-control" id="contrasena"
                                name="contrasena" placeholder="Contraseña" required
@@ -86,66 +87,57 @@
                 </div>
 
                 <div class=" form-group">
-
                     <button type="submit" class="btn btn-primary" name="iniciar-sesion"
                             value="iniciar-sesion">Iniciar sesión
                     </button>
- 
                 </div>
-  
+                </div>
             </div>
- 
         </form> 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                             <?php
-include ("footer.php");
-?>
-        <script type = "text/javascript">
-            $().ready(function () {
-                $('#form_iniciar_sesion').formValidation({
-                    message: 'Este valor no es correcto',
-                    icon: {
-                        valid: 'glyphicon glyphicon-ok',
-                        invalid: 'glyphicon glyphicon-remove',
-                        validating: 'glyphicon glyphicon-refresh'
-                    },
-                    fields: {
-                        usuario: {
-                            row: '.validacion',
-                            validators: {
-                                notEmpty: {
-                                    message: 'El usuario es obligatorio'
-                                },
-                                stringLength: {
-                                    min: 4,
-                                    message: 'El número de documento debe tener mínimo 4 caracteres'
-                                },
-                                regexp: {
-                                    regexp: /^[0-9]*([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))?$/,
-                                    message: 'El número de documento o correo electrónico no tiene un formato válido'
-                                }
-                            }
+<script type = "text/javascript">
+    $().ready(function () {
+        $('#form_iniciar_sesion').formValidation({
+            message: 'Este valor no es correcto',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                usuario: {
+                    row: '.validacion',
+                    validators: {
+                        notEmpty: {
+                            message: 'El usuario es obligatorio'
                         },
-                        contrasena: {
-                            row: '.validacion',
-                            validators: {
-                                notEmpty: {
-                                    message: 'La contraseña es obligatoria'
-                                },
-                                stringLength: {
-                                    min: 6,
-                                    message: 'La contraseña debe contener mínimo 6 caracteres'
-                                }
-                            }
+                        stringLength: {
+                            min: 4,
+                            message: 'El número de documento debe tener mínimo 4 caracteres'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]*([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))?$/,
+                            message: 'El número de documento o correo electrónico no tiene un formato válido'
                         }
                     }
-                });
-            });
-        </script>
-
-    </div>
-
-</div>
+                },
+                contrasena: {
+                    row: '.validacion',
+                    validators: {
+                        notEmpty: {
+                            message: 'La contraseña es obligatoria'
+                        },
+                        stringLength: {
+                            min: 6,
+                            message: 'La contraseña debe contener mínimo 6 caracteres'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
 
 
 

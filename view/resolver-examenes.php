@@ -24,7 +24,7 @@ $idEstudiante = $_SESSION['usuario']['idusuario'];
 $examenlis = $examenesDAO->listarExamenesPorEstudiante($idEstudiante);
 if ($examenlis->rowCount() > 0) {
     echo '<form action="resolver-examen.php" method="post">';
-    echo '<div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2"><table border="1" class="table table-hover"><tr><td><strong>Fecha Inicio</strong></td><td><strong>Fecha Fin</strong></td><td><strong>Fecha Hoy</strong></td><td><strong>Curso</strong></td><td><strong>Estado</strong></td></tr>';
+    echo '<div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2"><table border="1" class="table table-hover"><tr><td><strong>Fecha Inicio</strong></td><td><strong>Fecha Fin</strong></td><td><strong>Curso</strong></td><td><strong>Estado</strong></td></tr>';
          $hoy = date("Y-m-d");
         $tmp = explode('-', $hoy);
         $fechaHoy = mktime(0, 0, 0, $tmp[1], $tmp[2], $tmp[0]);
@@ -37,7 +37,6 @@ foreach ($examenlis as $fila) {
         $fechaFin = mktime(0, 0, 0, $strFin[1], $strFin[2], $strFin[0]);
     echo '<tr><td>' . date("Y-m-d" , $fechaIni) . '</td>';
     echo '<td>' . date("Y-m-d" , $fechaFin) . '</td>';
-    echo '<td>' . date("Y-m-d" , $fechaHoy). '</td>';
     echo '<td>' . $fila['nombrecurso'] . '</td>';
     if(date("U" , $fechaHoy)<date("U", $fechaIni)){
         echo '<td><a class="btn btn-primary" href="#">Programado</a></td></tr>';

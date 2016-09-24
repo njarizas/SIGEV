@@ -214,7 +214,6 @@ if (!empty($_SESSION['usuario'])) {
         <?php
     }
     ?>
-        <hr>
         <?php if (strcmp($boton, "continuar") == 0) { ?>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" 
@@ -239,7 +238,6 @@ if (!empty($_SESSION['usuario'])) {
             </div>
     <?php } ?>
     </form>
-    <br>
     <script type = "text/javascript">
         $().ready(function () {
             $('#curso').val('<?= empty($curso) ? '' : $curso ?>');

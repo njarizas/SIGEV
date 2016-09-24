@@ -1,7 +1,6 @@
-
-<p class="text-right" style="color: #FFFFFF" >SIGEV 2016 - Todos los derechos reservados ® </p> 
+<hr>
+<p class="text-right">SIGEV 2016 - Todos los derechos reservados ® </p> 
 </div>
 </div>
 </body>
 </html>
-
