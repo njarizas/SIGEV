@@ -2,7 +2,7 @@
 include ("header.php");
 $nombreCurso = "";
 $codigoCurso = "";
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
     require_once '../model/dao/implementacion/CursosMySqlDAO.class.php';
     $cursosDAO = new CursosMySqlDAO();
     if (isset($_POST['registrar-curso'])) {
@@ -22,9 +22,8 @@ if (!empty($_SESSION['usuario'])) {
             }
     }
     ?>
-    <div class="page-header">
-        <h2>Crear Cursos</h2>
-    </div>
+        <h4>Crear Cursos</h4>
+		<hr>
     <noscript>
     <p class="text-danger">
         Debe habilitar el JavaScript en su navegador!!!
@@ -107,6 +106,6 @@ if (!empty($_SESSION['usuario'])) {
     <?php
     include ("footer.php");
 } else {
-    echo 'Acceso denegado, por favor inicie sesión';
+    echo 'Acceso denegado, por favor inicie sesión con rol administrativo';
 }
 ?>

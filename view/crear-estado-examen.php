@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
 require_once '../model/dao/implementacion/EstadosExamenesMySqlDAO.class.php';
 $estadosExamenesDAO = new EstadosExamenesMySqlDAO();
 if (isset($_POST['registrar-estado-examen'])) {
@@ -11,9 +11,8 @@ if (isset($_POST['registrar-estado-examen'])) {
 }
 $estadoExamen = "";
 ?>
-<div class="page-header">
-    <h2>Crear Estado de Examen</h2>
-</div>
+    <h4>Crear Estado de Examen</h4>
+<hr>
 <noscript>
 <p class="text-danger">
     Debe habilitar el JavaScript en su navegador!!!

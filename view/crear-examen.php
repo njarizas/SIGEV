@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==2) {
     require_once '../controller/ExamenFacade.php';
 
     require_once '../model/dto/Usuario.class.php';
@@ -105,9 +105,8 @@ if (!empty($_SESSION['usuario'])) {
         }
     }
     ?>
-    <div class="page-header">
-        <h2>Crear Examen</h2>
-    </div>
+        <h4>Crear Examen</h4>
+    <hr>
     <noscript>
     <p class="text-danger">
         Debe habilitar el JavaScript en su navegador!!!

@@ -55,11 +55,9 @@
             }
         }
         ?>
-
         <div>
             <h2 style="color: #FFFFFF">Sistema de información para la gestión de exámenes virtuales</h2>
         </div>
-
         <noscript>
         <p class="text-danger">
             Debe habilitar el JavaScript en su navegador!!!

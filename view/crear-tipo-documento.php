@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
 require_once '../model/dao/implementacion/TiposDocumentoMySqlDAO.class.php';
 $tipoDocDAO = new TiposDocumentoMySqlDAO();
 if (isset($_POST['registrar-tipo-documento'])) {
@@ -11,9 +11,8 @@ if (isset($_POST['registrar-tipo-documento'])) {
 }
 $nombreTipoDoc = "";
 ?>
-<div class="page-header">
-    <h2>Crear Tipo de Documento</h2>
-</div>
+    <h4>Crear Tipo de Documento</h4>
+<hr>
 <noscript>
 <p class="text-danger">
     Debe habilitar el JavaScript en su navegador!!!

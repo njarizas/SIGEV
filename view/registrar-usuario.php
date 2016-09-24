@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
 require_once '../model/dto/Usuario.class.php';
 require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
 require_once '../model/dao/implementacion/TiposDocumentoMySqlDAO.class.php';
@@ -57,9 +57,8 @@ if (isset($_POST['registrar-usuario'])) {
     }
 }
 ?>
-<div class="page-header">
-    <h2>Registro Usuario</h2>
-</div>
+    <h4>Registro Usuario</h4>
+<hr>
 <noscript>
 <p class="text-danger">
     Debe habilitar el JavaScript en su navegador!!!

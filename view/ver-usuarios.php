@@ -1,15 +1,14 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
 require_once '../model/dto/Usuario.class.php';
 require_once '../model/dao/implementacion/UsuariosMySqlDAO.class.php';
 require_once '../model/dao/implementacion/TiposDocumentoMySqlDAO.class.php';
 $usuarioDAO = new UsuariosMySqlDAO();
 ?>
 <form id="editar-usuario" method="POST" class="form-horizontal" action="editar-usuario.php">
-    <div class="page-header">
-        <h2>Lista de usuarios</h2>
-    </div>
+        <h4>Lista de usuarios</h4>
+    <hr>
     <?php
     $usuarioslis = $usuarioDAO->listarTodos();
     if (count($usuarioslis) > 0) {

@@ -17,11 +17,8 @@
         <div class="container" style="background-color:#EEE;">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2" style="background-color:#FFF;">
-
-                    <div class="page-header">
-                        <h2>Registro Usuario</h2>
-                    </div>
-
+                        <h4>Registro Usuario</h4>
+                    <hr>
                     <noscript>
                     <p class="text-danger">
                         Debe habilitar el JavaScript en su navegador!!!

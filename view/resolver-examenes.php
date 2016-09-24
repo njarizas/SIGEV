@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==1) {
 require_once '../model/dao/implementacion/CursosMySqlDAO.class.php';
 require_once '../model/dao/implementacion/PreguntasMySqlDAO.class.php';
 require_once '../model/dao/implementacion/RespuestasMySqlDAO.class.php';

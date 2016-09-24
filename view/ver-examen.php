@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==2) {
 require_once '../model/dao/implementacion/CursosMySqlDAO.class.php';
 require_once '../model/dao/implementacion/PreguntasMySqlDAO.class.php';
 require_once '../model/dao/implementacion/RespuestasMySqlDAO.class.php';
@@ -33,7 +33,7 @@ $examenesDAO = new ExamenesMySqlDAO();
               $idPregunta=$row['idpregunta'];
               $infoPregunta=$preguntasDAO->verPregunta($idPregunta);
               $i=0;
-              echo '<h2>Pregunta '.($j+1).'</h2>';
+              echo '<h4>Pregunta '.($j+1).'</h4>';
               foreach ($infoPregunta as $fila) {
               if($i===0){
                    echo '<h3>'.$fila['enunciado'].'</h3>';

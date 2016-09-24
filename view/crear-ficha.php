@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
 require_once '../model/dao/implementacion/FichasMySqlDAO.class.php';
 $fichasDAO = new FichasMySqlDAO();
 if (isset($_POST['registrar-ficha'])) {
@@ -11,9 +11,8 @@ if (isset($_POST['registrar-ficha'])) {
 }
  $ficha = "";
 ?>
-<div class="page-header">
-    <h2>Crear Fichas</h2>
-</div>
+    <h4>Crear Ficha</h4>
+<hr>
 <noscript>
 <p class="text-danger">
     Debe habilitar el JavaScript en su navegador!!!

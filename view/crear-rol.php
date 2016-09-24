@@ -1,6 +1,6 @@
 <?php
 include ("header.php");
-if (!empty($_SESSION['usuario'])) {
+if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
 require_once '../model/dao/implementacion/RolesMySqlDAO.class.php';
 $rolesDAO = new RolesMySqlDAO();
 if (isset($_POST['registrar-rol'])) {
@@ -11,9 +11,8 @@ if (isset($_POST['registrar-rol'])) {
 }
 $nombreRol = "";
 ?>
-<div class="page-header">
-    <h2>Crear Roles</h2>
-</div>
+    <h4>Crear Rol</h4>
+<hr>
 <noscript>
 <p class="text-danger">
     Debe habilitar el JavaScript en su navegador!!!
