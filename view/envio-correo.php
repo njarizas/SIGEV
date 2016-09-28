@@ -84,8 +84,6 @@ foreach ($array as $email) {
 
  }
 ?>
-    
-<!DOCTYPE HTML>
 <html>
 <head>
 <title>Contacto</title>

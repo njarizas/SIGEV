@@ -16,7 +16,15 @@ class ResultadosPreguntasMySqlDAO implements ResultadosPreguntasDAO {
     function __construct() {
         $this->conn = Database::connect();
     }
-
+	public function actualizar($resultadoPreguntaDTO){
+		$query="update resultadospreguntas set idrespuesta=?,idpregunta=?,idexamen=? where idresultadopregunta=?";
+		$stmt = $this->conn->prepare($query);
+		$stmt->bindparam(1, $resultadoPreguntaDTO->getIdRespuesta());
+        $stmt->bindparam(2, $resultadoPreguntaDTO->getIdPregunta());
+        $stmt->bindparam(3, $resultadoPreguntaDTO->getIdExamen());
+        $stmt->bindparam(4, $resultadoPreguntaDTO->getIdResultadoPregunta());
+        return $stmt->execute();
+	}
     public function insertar($resultadoPreguntaDTO) {
          $query = "INSERT INTO resultadospreguntas (idresultadoexamen,idpregunta,idrespuesta) VALUES(?,?,?)";
         $stmt = $this->conn->prepare($query);
