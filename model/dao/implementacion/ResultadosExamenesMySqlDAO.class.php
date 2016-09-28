@@ -16,6 +16,22 @@ class ResultadosExamenesMySqlDAO implements ResultadosExamenesDAO {
     function __construct() {
         $this->conn = Database::connect();
     }
+    
+    public function existeResultadoParaUsuarioYExamen ($idExamen,$estudiante){
+    	$query = "SELECT * FROM resultadosexamenes where idexamen=?,idusuario=?";
+    	$stmt = $this->conn->prepare($query);
+    	$stmt->bindparam(1, $idExamen);
+    	$stmt->bindparam(2, $estudiante);
+    	$stmt->execute();
+    	$rows = $stmt->fetchAll();
+    	if (count($rows)!=0){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+    
 	public function listarExamenPorIdUsuarioYExamen($idExamen,$idUsuario){
 		$query = "SELECT * FROM resultadosexamenes where idexamen=?,idusuario=?";
 		$stmt = $this->conn->prepare($query);
