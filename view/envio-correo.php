@@ -45,11 +45,8 @@ $msg = null;
 
 
 
-         $array = array("eegonzalez03@misena.edu.co");
-
-foreach ($array as $email) {
-
-    $correo     = $email;
+     
+    $correo = $email ;
     $titulo     = $asunto;
     $contenido  = $mensaje; //campo mensaje del html
 
@@ -72,14 +69,14 @@ foreach ($array as $email) {
     $mail->Send();
     $mail->ClearAddresses();
 
-}
+
          if($mail->Send())
          {
-             $msg= "En hora buena el mensaje ha sido enviado con exito a $email";
+         	$msg = "Lo siento, ha habido un error al enviar el mensaje a $email";
          }
          else
          {
-             $msg = "Lo siento, ha habido un error al enviar el mensaje a $email";
+             $msg= "En hora buena el mensaje ha sido enviado con exito a $email";
          }
 
  }
@@ -87,38 +84,30 @@ foreach ($array as $email) {
 <html>
 <head>
 <title>Contacto</title>
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/imagenContactenos.css">
 </head>
 <body>
 <h3>Email de Contacto</h3>
 <strong><?php echo $msg; ?></strong>
-
+<div class="container">
+<div style="background-color: rgba(255,255,266,0.8); padding: 30px; padding-bottom: 10px; border-radius: 10px;margin: 30px;">
 <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post" enctype="multipart/form-data">
-    
-<table border="0">
-<tr>
-<td>Nombre del destinatario:</td>
-<td><input name="nombre" type="text" id="nombre"></td>
-</tr>
-<tr>
-<td>Email del destinatario:</td>
-<td><input name="email" type="text" id="email"></td>
-</tr>
-<tr>
-<td>Asunto:</td>
-<td><input name="asunto" type="text" id="asunto"></td>
-</tr>
-<tr>
-<td>Archivo adjunto:</td>
-<td><input type="file" name="adjunto"></td>
-</tr>
-<tr>
-<td>Mensaje:</td>
-<td><textarea name="mensaje" cols="50" rows="15" id="mensaje"></textarea></td>
-</tr>
-<tr>
-<td></td><td><input type="submit" value="Enviar"></td>
-</tr>
-</table>
-<input type="hidden" name="phpmailer">
+<label>Nombre del destinatario:</label>   
+<input name="nombre" type="text" id="nombre" class="form-control">
+<label>Email del destinatario:</label>
+<input name="email" type="text" id="email" class="form-control">
+<label>Asunto:</label>
+<input name="asunto" type="text" id="asunto" class="form-control">
+<label>Archivo adjunto:</label>
+<input type="file" name="adjunto" class="form-control">
+<label>Mensaje:</label>
+<textarea name="mensaje" cols="50" rows="15" id="mensaje" class="form-control"></textarea>
+<br/>
+
+<button class="btn btn-danger">Enviar</button>
+<input type="hidden" name="phpmailer" class="form-control">
 </form>
+</div>
+</div>
 </body>

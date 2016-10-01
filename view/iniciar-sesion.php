@@ -56,8 +56,10 @@
         }
         ?>
         <div>
-            <h2 style="color: #FFFFFF">Sistema de información para la gestión de exámenes virtuales</h2>
+            <h2 style="color: #FFFFFF">Sistema de información para la gestión de exámenes virtuales <a href="../view/envio-correo.php"><input type="button" class="btn btn-success" style="float: right;"value="Contactenos"></input></a></h2>
+            
         </div>
+      
         <noscript>
         <p class="text-danger">
             Debe habilitar el JavaScript en su navegador!!!
