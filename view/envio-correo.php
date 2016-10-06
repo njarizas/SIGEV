@@ -88,10 +88,10 @@ $msg = null;
 <link rel="stylesheet" href="css/imagenContactenos.css">
 </head>
 <body>
-<h3>Email de Contacto</h3>
+<h2 style="color: #FFFFFF">Contáctanos</h2>
 <strong><?php echo $msg; ?></strong>
-<div class="container">
-<div style="background-color: rgba(255,255,266,0.8); padding: 30px; padding-bottom: 10px; border-radius: 10px;margin: 30px;">
+<div class="container" >
+<div style="background-color: rgba(255,255,266,0.8); padding: 30px; padding-bottom: 10px; border-radius: 10px;margin: 30px; height: 450px; width: 450px;">
 <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post" enctype="multipart/form-data">
 <label>Nombre del destinatario:</label>   
 <input name="nombre" type="text" id="nombre" class="form-control">
@@ -102,7 +102,7 @@ $msg = null;
 <label>Archivo adjunto:</label>
 <input type="file" name="adjunto" class="form-control">
 <label>Mensaje:</label>
-<textarea name="mensaje" cols="50" rows="15" id="mensaje" class="form-control"></textarea>
+<textarea name="mensaje" cols="50" rows="4" id="mensaje" class="form-control"></textarea>
 <br/>
 
 <button class="btn btn-danger">Enviar</button>

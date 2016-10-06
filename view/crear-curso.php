@@ -23,7 +23,7 @@ if (!empty($_SESSION['usuario']) && $_SESSION['usuario']['rol']==3) {
     }
     ?>
         <h4>Crear Cursos</h4>
-		<hr>
+        		<hr>
     <noscript>
     <p class="text-danger">
         Debe habilitar el JavaScript en su navegador!!!
