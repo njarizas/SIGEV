@@ -28,7 +28,7 @@ $msg = null;
           //permite modo debug para ver mensajes de las cosas que van ocurriendo
           //$mail->SMTPDebug = 2;
 
-		  //Debo de hacer autenticaci�n SMTP
+		  //Debo de hacer autenticaciï¿½n SMTP
           $mail->SMTPAuth = true;
           $mail->SMTPSecure = "ssl";
 
@@ -46,9 +46,10 @@ $msg = null;
 
 
      
-    $correo = $email ;
-    $titulo     = $asunto;
-    $contenido  = $mensaje; //campo mensaje del html
+    $correo     = $_POST['email'];
+    $titulo     = $_POST['asunto'];
+    $contenido  = $_POST['mensaje']; //campo mensaje del html
+          
 
 
 
@@ -72,11 +73,11 @@ $msg = null;
 
          if($mail->Send())
          {
-         	$msg = "Lo siento, ha habido un error al enviar el mensaje a $email";
+         	$msg = "Lo siento, ha habido un error al enviar el mensaje a $correo ";
          }
          else
          {
-             $msg= "En hora buena el mensaje ha sido enviado con exito a $email";
+             $msg= "En hora buena el mensaje ha sido enviado con exito a $correo";
          }
 
  }
@@ -88,7 +89,7 @@ $msg = null;
 <link rel="stylesheet" href="css/imagenContactenos.css">
 </head>
 <body>
-<h2 style="color: #FFFFFF">Contáctanos</h2>
+<h2 style="color: #FFFFFF">ContÃ¡ctanos</h2>
 <strong><?php echo $msg; ?></strong>
 <div class="container" >
 <div style="background-color: rgba(255,255,266,0.8); padding: 30px; padding-bottom: 10px; border-radius: 10px;margin: 30px; height: 450px; width: 450px;">
