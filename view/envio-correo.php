@@ -46,10 +46,9 @@ $msg = null;
 
 
      
-    $correo = $email ;
+    $correo = $_POST["email"] ;
     $titulo     = $asunto;
     $contenido  = $mensaje; //campo mensaje del html
-
 
 
     $mail->From = "infosigev@gmail.com";
@@ -72,11 +71,11 @@ $msg = null;
 
          if($mail->Send())
          {
-         	$msg = "Lo siento, ha habido un error al enviar el mensaje a $email";
+         	$msg = "Lo siento, ha habido un error al enviar el mensaje a $correo";
          }
          else
          {
-             $msg= "En hora buena el mensaje ha sido enviado con exito a $email";
+             $msg= "En hora buena el mensaje ha sido enviado con exito a $correo";
          }
 
  }

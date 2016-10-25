@@ -45,7 +45,8 @@ foreach ($examenlis as $fila) {
         echo '<td><a class="btn btn-warning" href="#">Vencido</a></td></tr>';
     }
     else{
-          echo '<td><button type="submit" class="btn btn-success" name="examen" value="'. $fila['idexamen'] .'">Activo</button></td></tr>';
+          echo '<td><button type="submit" class="btn btn-success" name="examen" value="'. $fila['idexamen'] 
+                  .'">Activo</button></td></tr>';
     }
 }
 echo '</table></div></div></form>';
