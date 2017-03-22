@@ -46,17 +46,10 @@ $msg = null;
 
 
      
-<<<<<<< HEAD
-    $correo = $_POST["email"] ;
-    $titulo     = $asunto;
-    $contenido  = $mensaje; //campo mensaje del html
-=======
+
     $correo     = $_POST['email'];
     $titulo     = $_POST['asunto'];
     $contenido  = $_POST['mensaje']; //campo mensaje del html
-          
->>>>>>> a1bb3b191106bc8f3ff7dc233a9650d94316d4ae
-
 
     $mail->From = "infosigev@gmail.com";
 
@@ -78,11 +71,8 @@ $msg = null;
 
          if($mail->Send())
          {
-<<<<<<< HEAD
          	$msg = "Lo siento, ha habido un error al enviar el mensaje a $correo";
-=======
-         	$msg = "Lo siento, ha habido un error al enviar el mensaje a $correo ";
->>>>>>> a1bb3b191106bc8f3ff7dc233a9650d94316d4ae
+
          }
          else
          {
